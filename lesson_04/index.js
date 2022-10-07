@@ -44,3 +44,16 @@ for (b1 = 0; b1 < 1; b1++) {
     console.log(string)
 }
 //==================
+
+
+let a1 = 10;
+let string1 = "";
+let res;
+for (c1 = 0; c1 < 1; c1++) {
+    for (let c2 = 10; c2 <= 20; c2++) {
+        string += `${c2**2}, `;
+    }
+    console.log(string)
+}
+//==================
+
