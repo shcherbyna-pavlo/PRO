@@ -3,29 +3,29 @@
 // Відсортувати масив за зростанням.
 // Видалити елементи з масиву з 2 по 4 (включно!).
 
-let quantity = +prompt('Введіть кількість єлементів в масиві');
-if (isNaN(quantity)) {
-   alert('невірно вказане значення довжини масиву')
-   quantity = +prompt('Введіть кількість єлементів в масиві')
-} else if (quantity === 0) {
-   alert('Ви не вказали кількість єлементів в масиві')
-   quantity = +prompt('Введіть кількість єлементів в масиві')
-}
+// let quantity = +prompt('Введіть кількість єлементів в масиві');
+// if (isNaN(quantity)) {
+//    alert('невірно вказане значення довжини масиву')
+//    quantity = +prompt('Введіть кількість єлементів в масиві')
+// } else if (quantity === 0) {
+//    alert('Ви не вказали кількість єлементів в масиві')
+//    quantity = +prompt('Введіть кількість єлементів в масиві')
+// }
 
-let a = []
-for (let i = 0; i < quantity; i++ ) {
-   a[i] = prompt(`Введіть елемент № ${i+1}`)
-   if (a[i] === null) {
-      a.pop()
-      break
-   } else if  (!(isNaN(+a[i]))) {
-      a[i] = Number(a[i])
-   } 
-}
-console.log(a)
-console.log(a.sort().sort((a, b) => {return a-b}))
-a.splice(1, 3);
-console.log(a)
+// let a = []
+// for (let i = 0; i < quantity; i++ ) {
+//    a[i] = prompt(`Введіть елемент № ${i+1}`)
+//    if (a[i] === null) {
+//       a.pop()
+//       break
+//    } else if  (!(isNaN(+a[i]))) {
+//       a[i] = Number(a[i])
+//    } 
+// }
+// console.log(a)
+// console.log(a.sort().sort((a, b) => {return a-b}))
+// a.splice(1, 3);
+// console.log(a)
 
 // ДЗ 11. Пошук у масиві
 const arr = [16,-37,54,-4,72,-56,47,4,-16,25,-37,46,4,-51,27,-63,4,-54,76,-4,12,-35,4,47]
@@ -34,7 +34,7 @@ const arr = [16,-37,54,-4,72,-56,47,4,-16,25,-37,46,4,-51,27,-63,4,-54,76,-4,12,
 
 const result1 = arr.reduce((result, elem) => {
    if (elem > 0) {
-      result += elem;
+      return result + elem;
    } return result
 },0);
 const result2 = arr.reduce((result, elem) => {
@@ -49,7 +49,7 @@ console.log(result1, result2)
 
 const result3 = arr.reduce((result, elem) => {
    if (elem < result){
-      result = elem
+      return result = elem
    } return result;
 })
 console.log(result3, arr.indexOf(result3))
@@ -60,7 +60,7 @@ console.log(result3, arr.indexOf(result3))
 
 const result4 = arr.reduce((result, elem) => {
    if (elem > result){
-      result = elem
+      return result = elem
    } return result;
 })
 console.log(result4, arr.indexOf(result4))
@@ -103,7 +103,7 @@ console.log(result7)
 
 const result8 = arr.reduce((result, elem) => {
    if ((elem > 0) && (elem % 2 === 0)) {
-      result += elem;
+      return result + elem;
    } return result
 },0)
 
@@ -114,7 +114,7 @@ console.log(result8)
 
 const result9 = arr.reduce((result, elem) => {
    if ((elem > 0) && !(elem % 2 === 0)) {
-      result += elem;
+      return result + elem;
    } return result
 },0)
 
@@ -125,7 +125,7 @@ console.log(result9)
 
 const result10 = arr.reduce((result, elem) => {
    if (elem > 0) {
-      result *= elem;
+      return result * elem;
    } return result
 },1)
 
@@ -138,10 +138,11 @@ console.log(result10)
 
 const result11 = arr.reduce((result, elem) => {
    if (elem > result){
-      result = elem
-   } else {result}
+      return result = elem
+   }
    return result;
 })
+
 for(let i=0; i<= arr.length-1; i++) {
    if (!(arr[i] === result11)) {
       arr[i] = 0
@@ -219,8 +220,7 @@ const tell = users.reduce((userPhone, user) => {
 },[])
 
 const sum = users.reduce((count, userBalance) => {
-   count += Number(userBalance.balance.replace('$', '').replace(',', ''));
-   return count
+   return count + Number(userBalance.balance.replace('$', '').replace(',', ''));
 },0)
 
 console.log(tell)
