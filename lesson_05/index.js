@@ -3,29 +3,29 @@
 // Відсортувати масив за зростанням.
 // Видалити елементи з масиву з 2 по 4 (включно!).
 
-// let quantity = +prompt('Введіть кількість єлементів в масиві');
-// if (isNaN(quantity)) {
-//    alert('невірно вказане значення довжини масиву')
-//    quantity = +prompt('Введіть кількість єлементів в масиві')
-// } else if (quantity === 0) {
-//    alert('Ви не вказали кількість єлементів в масиві')
-//    quantity = +prompt('Введіть кількість єлементів в масиві')
-// }
+let quantity = +prompt('Введіть кількість єлементів в масиві');
+if (isNaN(quantity)) {
+   alert('невірно вказане значення довжини масиву')
+   quantity = +prompt('Введіть кількість єлементів в масиві')
+} else if (quantity === 0) {
+   alert('Ви не вказали кількість єлементів в масиві')
+   quantity = +prompt('Введіть кількість єлементів в масиві')
+}
 
-// let a = []
-// for (let i = 0; i < quantity; i++ ) {
-//    a[i] = prompt(`Введіть елемент № ${i+1}`)
-//    if (a[i] === null) {
-//       a.pop()
-//       break
-//    } else if  (!(isNaN(+a[i]))) {
-//       a[i] = Number(a[i])
-//    } 
-// }
-// console.log(a)
-// console.log(a.sort().sort((a, b) => {return a-b}))
-// a.splice(1, 3);
-// console.log(a)
+let a = []
+for (let i = 0; i < quantity; i++ ) {
+   a[i] = prompt(`Введіть елемент № ${i+1}`)
+   if (a[i] === null) {
+      a.pop()
+      break
+   } else if  (!(isNaN(+a[i]))) {
+      a[i] = Number(a[i])
+   } 
+}
+console.log(a)
+console.log(a.sort().sort((a, b) => {return a-b}))
+a.splice(1, 3);
+console.log(a)
 
 // ДЗ 11. Пошук у масиві
 const arr = [16,-37,54,-4,72,-56,47,4,-16,25,-37,46,4,-51,27,-63,4,-54,76,-4,12,-35,4,47]
