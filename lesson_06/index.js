@@ -65,35 +65,74 @@
 // Написати функцію doMath(x, znak, y), яка отримує 3 аргументи: числа x і y, рядок znak. У змінній znak може бути: +, -, *, /, %, ^ (ступінь ).
 // Вивести результат математичної дії, вказаної в змінній znak.Обидва числа і знак виходять від користувача.
 
-let znakddd = prompt("Що Вам потрібно зробити? \n ' + ' - додавання \n ' - ' - віднімання \n ' * '- множення \n ' / ' - ділення \n ' % ' - відсоток від числа \n ' ^ ' - піднесення числа до степеня")
 
 
-function doMath(x, znak, y) {
-let a
+ const test = function doMath(x, znak, y) {
+   let result
+   let xx
+   let yy
+   let znakddd = prompt("Що Вам потрібно зробити? \n ' + ' - додавання \n ' - ' - віднімання \n ' * '- множення \n ' / ' - ділення \n ' % ' - відсоток від числа \n ' ^ ' - піднесення числа до степеня")
+
+znakddd === "-" ? a = `${xx} ${znak} ${y} = ${x - y}` : 0
+znakddd === "+" ? a = `${xx} ${znak} ${y} = ${x + y}` : 0
 switch (znakddd) {
    case "-":
-      a = `${x} - ${y} = ${x - y}`;
+      xx = +prompt('Перше число')
+      yy = +prompt('Друге число')
+      result = `${x} - ${y} = ${x - y}`;
       break;
    case "+":
-      a = `${x} + ${y} = ${x + y}`;
+      xx = +prompt('Перше число')
+      yy = +prompt('Друге число')
+      result = `${x} + ${y} = ${x + y}`;
       break;
    case "*":
-      a = `${x} * ${y} = ${x * y}`;
+      xx = +prompt('Перше число')
+      yy = +prompt('Друге число')
+      result = `${x} * ${y} = ${x * y}`;
       break;
    case "/":
-      a = `${x} / ${y} = ${x / y}`;
+      xx = +prompt('Перше число')
+      yy = +prompt('Друге число')
+      result = `${x} / ${y} = ${x / y}`;
       break;
    case "%":
-      a = `${y} від ${x} = ${(x * (y / 100))*100}%`;
+      xx = +prompt('Перше число')
+      yy = +prompt('Друге число')
+      result = `${y} від ${x} = ${(x * (y / 100))*100}%`;
       break;
    case "^":
-      a = `${x} в ступені ${y} = ${Math.pow(x, y)}`;
+      xx = +prompt('Перше число')
+      yy = +prompt('Друге число')
+      result = `${xx} в ступені ${yy} = ${Math.pow(xx, yy)}`;
       break;
       default:
-         a = alert("Ви ввели невірний знак")
+         result = alert("Ви ввели невірний знак")
+         
+   }
+ return { 
+   result : result,
+   xx : xx,
+   yy : yy,
+   znakddd : znakddd
+ }
 }
- return a
-}
-let xx = +prompt('Перше число')
-let yy = +prompt('Друге число')
-console.log(doMath(xx,znakddd,yy))
+
+let xx = test.xx
+let result = test.result
+let yy = test.yy
+let znakddd = test.znakddd
+// doMath(xx,znakddd,yy)
+console.log(test(xx,znakddd,yy).result)
+
+
+
+// Написати функцію заповнення даними користувача двомірного масиву. 
+// Довжину основного масиву і внутрішніх масивів задає користувач. Значення всіх елементів всіх масивів задає користувач.
+// const a = prompt('елементи масиву')
+// const b = [...a];
+// // function array (x) {
+
+// // }
+
+// console.log(b)
