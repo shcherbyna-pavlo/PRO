@@ -20,7 +20,7 @@ for (let i = 0; i < quantity; i++ ) {
       break
    } else if  (!(isNaN(+a[i]))) {
       a[i] = Number(a[i])
-   } 
+   }
 }
 console.log(a)
 console.log(a.sort().sort((a, b) => {return a-b}))
