@@ -72,11 +72,11 @@
    let xx
    let yy
    let znakddd = prompt("Що Вам потрібно зробити? \n ' + ' - додавання \n ' - ' - віднімання \n ' * '- множення \n ' / ' - ділення \n ' % ' - відсоток від числа \n ' ^ ' - піднесення числа до степеня")
-
-znakddd === "-" ? a = `${xx} ${znak} ${y} = ${x - y}` : 0
-znakddd === "+" ? a = `${xx} ${znak} ${y} = ${x + y}` : 0
-switch (znakddd) {
-   case "-":
+   
+   znakddd === "-" ? a = `${xx} ${znak} ${y} = ${x - y}` : 0
+   znakddd === "+" ? a = `${xx} ${znak} ${y} = ${x + y}` : 0
+   switch (znakddd) {
+      case "-":
       xx = +prompt('Перше число')
       yy = +prompt('Друге число')
       result = `${x} - ${y} = ${x - y}`;
@@ -92,8 +92,8 @@ switch (znakddd) {
       result = `${x} * ${y} = ${x * y}`;
       break;
    case "/":
-      xx = +prompt('Перше число')
-      yy = +prompt('Друге число')
+      xx = +prompt('Перrererrше число')
+      yy = +prompt('Дрererererуге число')
       result = `${x} / ${y} = ${x / y}`;
       break;
    case "%":
