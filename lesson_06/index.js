@@ -59,8 +59,8 @@ console.log (numberSum ())
 
 
 let mathSigns = prompt("Що Вам потрібно зробити? \n ' + ' - додавання \n ' - ' - віднімання \n ' * '- множення \n ' / ' - ділення \n ' % ' - Скільки відсотків від числа 1 складає число 2 \n ' ^ ' - піднесення першого числа до степеня(число 2)")
-let twoNumber = prompt('Введіть перше число');
-let oneNumber = prompt('Введіть друге число');
+let twoNumber = +prompt('Введіть перше число');
+let oneNumber = +prompt('Введіть друге число');
 
 const calculator = function doMath(x, znak, y) {
 
