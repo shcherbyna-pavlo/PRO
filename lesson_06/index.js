@@ -14,8 +14,9 @@ console.log(array);
 // ДЗ 14. Реалізуйте функцію generateKey
 
 const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-let randomKey = "";
+
 function generateKey(lengthKey, initialKeyData) {
+   let randomKey = "";
   for (i=0; i < lengthKey; i++){
    randomKey += initialKeyData[Math.floor(Math.random() * initialKeyData.length)]
   }
@@ -32,24 +33,23 @@ console.log(key);
 // -Дан масив з елементами різних типів. Створити функцію яка вираховує середнє арифметичне лише числових елементів даного масиву.
 
 const arr = [1, 3, 5, 'r', 'y', 'b', 7, 'e', 48, 50]
-let numberArray;
 let sum = 0;
-let ghghg;
 function numberSum () {
-   numberArray = arr.reduce((b, el) => {
-      if (!(isNaN(+el))) {
+
+   let numberArray = arr.reduce((b, el) => {
+      if (!(Number.isNaN(+el))) {
          b.push(el)
       }
       return b
-   },[])
+   }, [])
 
-for (let i = 0; i < numberArray.length; i++) {
-   sum += numberArray[i]
-}
+   for (let i = 0; i < numberArray.length; i++) {
+      sum += numberArray[i]
+   }
    return sum / numberArray.length
 }
 
-console.log (numberSum ())
+console.log(numberSum())
 
 
 
@@ -148,24 +148,18 @@ dataArray()
 // -Створити функцію, яка прибирає з рядка всі символи, які ми передали другим аргументом. 'func(" hello world", ['l', 'd'])' поверне нам "heo wor".
 // Вихідний рядок та символи для видалення задає користувач
 
-function delSymbol() {
-   let inputString = prompt("Введіть рядок");
-   let inputSymbol;
-   let i = 0;
-   let symbol = [];
+let inputString = prompt("Введіть рядок");
+let inputSymbol;
+let symbol = [];
+let i1 = 0;
+do {
+   inputSymbol = prompt(`Введіть символ для видалення з рядка`);
+   symbol.push(inputSymbol);
+   i1++;
+} while (inputSymbol !== null);
 
-   do {
-      inputSymbol = prompt(`Введіть символ для видалення з рядка № ${i + 1}`)
-      symbol.push(inputSymbol);
-      i++;
-   } while (inputSymbol !== null);
-   symbol.pop()
-
-   let stringArray = [...inputString];
-
-   stringArray = stringArray.filter(item => !symbol.includes(item))
-
-   console.log(stringArray.join(''))
+function delSymbol(string, elString) {
+   return [...string].filter(item => !elString.includes(item)).join('');
 }
 
-delSymbol();
+console.log(delSymbol(inputString, symbol))
