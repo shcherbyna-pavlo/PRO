@@ -33,8 +33,9 @@ console.log(key);
 // -Дан масив з елементами різних типів. Створити функцію яка вираховує середнє арифметичне лише числових елементів даного масиву.
 
 const arr = [1, 3, 5, 'r', 'y', 'b', 7, 'e', 48, 50]
-let sum = 0;
+
 function numberSum () {
+   let sum = 0;
 
    let numberArray = arr.reduce((b, el) => {
       if (!(Number.isNaN(+el))) {
