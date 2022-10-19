@@ -59,70 +59,38 @@ console.log (numberSum ())
 
 
 let mathSigns = prompt("Що Вам потрібно зробити? \n ' + ' - додавання \n ' - ' - віднімання \n ' * '- множення \n ' / ' - ділення \n ' % ' - Скільки відсотків від числа 1 складає число 2 \n ' ^ ' - піднесення числа до степеня")
-let twoNumber = +prompt('Введіть перше число') 
-let oneNumber = +prompt('Введіть друге число');
-let result
+let twoNumber = prompt('Введіть перше число');
+let oneNumber = prompt('Введіть друге число');
 
+const calculator = function doMath(x, znak, y) {
 
-const calculator =function doMath(x, znak, y) {
-   
-   // mathSigns = prompt("Що Вам потрібно зробити? \n ' + ' - додавання \n ' - ' - віднімання \n ' * '- множення \n ' / ' - ділення \n ' % ' - Скільки відсотків від числа 1 складає число 2 \n ' ^ ' - піднесення числа до степеня")
-   
-   // let result;
-   // let oneNumber ;
-   // let twoNumber ;
    switch (znak) {
-  
+
       case "+":
       case "-":
-      case "*":
       case "/":
-         oneNumber = +prompt('Введіть перше число')
-         twoNumber = prompt('Введіть друге число');
-         result = `${x} ${znak} ${y} = ` + eval(`${x} ${znak} ${y}`);
-         console.log(x)
-         console.log(y)
-         console.log(result)
-         break;
+      case "*":
+         alert(`${x} ${znak} ${y} = ` + eval(`${x} ${znak} ${y}`));
+         return `${x} ${znak} ${y} = ` + eval(`${x} ${znak} ${y}`);
 
       case "%":
-         oneNumber = +prompt('Введіть перше число')
-         twoNumber = +prompt('Введіть друге число')
-         result = `${x} від ${znak} = ${(y / x) * 100}%`;
-         break;
-      case "^":
-         oneNumber = +prompt('Введіть перше число - основа степеня')
-         twoNumber = +prompt('Введіть друге число - показник степеня')
-         result = `${x} в степені ${y} = ${Math.pow(x, y)}`;
-         break;
+         alert(`${y} від ${x} = ${(y / x) * 100}%`);
+         return `${y} від ${x} = ${(y / x) * 100}%`;
 
-         default:
-            result = alert("Ви ввели невірний знак")
-            // mathSigns = prompt("Що Вам потрібно зробити? \n ' + ' - додавання \n ' - ' - віднімання \n ' * '- множення \n ' / ' - ділення \n ' % ' - Скільки відсотків від числа 1 складає число 2 \n ' ^ ' - піднесення числа до степеня")
-         }
-         
-         return {
-            result: result,
-            oneNumber: oneNumber,
-            twoNumber: twoNumber
-         }
-         // console.log(result)
-         // console.log(x)
-      }
-      
-      // let twoNumber  = calculator.twoNumber
-      // let oneNumber  = calculator.oneNumber
-      // let result     =   calculator.result
-      
-      
-      calculator(oneNumber, mathSigns, twoNumber)
-      console.log(result)
-      // console.log(x)
+      case "^":
+         alert(`${x} в степені ${y} = ${Math.pow(x, y)}`);
+         return `${x} в степені ${y} = ${Math.pow(x, y)}`;
+   }
+}
+
+console.log(calculator(oneNumber, mathSigns, twoNumber))
+
 
 
 
 // Написати функцію заповнення даними користувача двомірного масиву. 
 // Довжину основного масиву і внутрішніх масивів задає користувач. Значення всіх елементів всіх масивів задає користувач.
+
 
 function dataArray() {
 
@@ -169,13 +137,11 @@ function dataArray() {
       result1 = result1.filter(symbol2 => symbol2 !== "++")
 
    } while (elArrayOne !== null)
+
    console.log (result1)
 }
 
 dataArray()
-
-
-
 
 
 
@@ -193,7 +159,6 @@ function delSymbol() {
       symbol.push(inputSymbol);
       i++;
    } while (inputSymbol !== null);
-
    symbol.pop()
 
    let stringArray = [...inputString];
@@ -202,4 +167,5 @@ function delSymbol() {
 
    console.log(stringArray.join(''))
 }
-delSymbol()
+
+delSymbol();
