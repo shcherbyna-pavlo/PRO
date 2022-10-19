@@ -160,7 +160,8 @@ do {
 } while (inputSymbol !== null);
 
 function delSymbol(string, elString) {
-   return [...string].filter(item => !elString.includes(item)).join('');
+   let stringArray = [...string];
+   return stringArray.filter(item => !elString.includes(item)).join('');
 }
 
 console.log(delSymbol(inputString, symbol))
