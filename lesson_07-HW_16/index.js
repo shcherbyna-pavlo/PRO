@@ -13,7 +13,3 @@ function pow (num, degree) {
     return d
 }
 console.log(`${a} в степені ${b} = `, pow (a, b))
-
-a+f
-
-a+=f
