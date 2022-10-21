@@ -1,11 +1,19 @@
-let a = +prompt("Введіть число яке Ви хочете піднести до степеня")
-let b = +prompt("Введіть степінь")
+let a = +prompt("Перше число")
+let b = +prompt("степінь")
 
+let c = 1
+let d = a
 function pow (num, degree) {
-    if (degree === 1) return num;
-    if (degree === 0) return 1;
-    
-    return num * pow (num, degree - 1)
-}
+    if (c >= degree) return;
+    if (degree === 1) return d;
 
+    c++
+    d = d * num
+    pow (a, b)
+    return d
+}
 console.log(`${a} в степені ${b} = `, pow (a, b))
+
+a+f
+
+a+=f
