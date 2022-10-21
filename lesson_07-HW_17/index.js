@@ -1,19 +1,11 @@
 // ДЗ 17. Функція із замиканням
 
 
-function ff (x) {
+function sum() {
+    let a = 1;
+    return function l() {
+        a += a
+        console.log(a)
+    }
 }
-
-
-let a1 = 0;
-function ff1 (y) {
-    a += y
-    return a
-}
-
-
-console.log(ff1 (5))
-console.log(ff1 (7))
-console.log(ff1 (10))
-console.log(ff1 (100))
-console.log(ff1 (11111))
+let g = sum()
