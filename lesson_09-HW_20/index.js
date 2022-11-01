@@ -18,6 +18,11 @@ class Person {
             Вік: ${this.age}
             Група крові: ${this.bloodType}`
         )
+
+        return `Призвище: ${this.lastName}
+        Ім'я: ${this.name}
+        Вік: ${this.age}
+        Група крові: ${this.bloodType}`
     }
 }
 
@@ -27,7 +32,7 @@ class Car{
     color;
     yearOfProduction;
     VIN;
-    owner;
+    owner = [];
 
     constructor(carBrand, model, color, yearOfProduction, VIN) {
         this.carBrand = carBrand;
@@ -36,11 +41,7 @@ class Car{
         this.yearOfProduction = yearOfProduction;
         this.VIN = VIN;
     }
-
-    addOwner(lastName,name,age,bloodType) {
-        this.owner = new Person(lastName,name,age,bloodType)
-    }
-
+    
     showCar() {
         console.log(`
             Назва машини: ${this.carBrand}
@@ -50,14 +51,19 @@ class Car{
             VIN: ${this.VIN}`
         )
     }
+    
+    addOwner() {
+        this.owner.showPerson()
+    }
+
 }
 
 let person = new Person("Щербина","Павло",33,"2-га +");
 let car = new Car("bmw", "ss", "red", 1989, "dsd1254f78f6g45");
 
-car.addOwner("Щербина","Павло",33,"2-га +");
-
 person.showPerson();
+car.addOwner();
+
 car.showCar();
 
 // console.log(car)
