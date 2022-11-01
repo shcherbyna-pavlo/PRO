@@ -66,7 +66,7 @@ class Car{
 }
 
 // let car = new Car("bmw", "ss", "red", 1989, "dsd1254f78f6g45");
-// let person = new Person("Щербина","Павло",33)
+// let person = new Person("Щербина","Павло",33);
 // car.addOwner(person);
 // console.log(car.showCar())
 
@@ -84,4 +84,3 @@ console.log(car.showCar())
 let car1 = new Car("mers", "model", "green", 2008, "dsd125sasd4f78f6g45");
 car1.addOwner("Щербина","Павло",33);
 console.log(car1.showCar())
-
