@@ -1,4 +1,3 @@
-
 class Person {
     lastName;
     name;
@@ -74,7 +73,6 @@ class Car{
 // let person1 = new Person("Петров","Олександр",18);
 // car1.addOwner(person1);
 // console.log(car1.showCar())
-
 
 
 let car = new Car("bmw", "s", "red", 2019, "dsd125sasd4f78f6g45");
