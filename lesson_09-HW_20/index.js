@@ -33,26 +33,15 @@ class Car{
         this.VIN = VIN;
     }
 
-    // addOwner(a) {
-    //     this.owner = a;
-    // }
+    addOwner(person) {
+        if (person.age < 18) {
+           return alert("Людині не виповнилось 18 років, тому власник не буде присвоєний")
+        }
 
-    addOwner(lastName,name,age) {
-      this.owner = new Person(lastName,name,age);
+        return this.owner = person;
     }
 
     showCar() {
-        if (this.owner.age < 18) {
-            alert("Людині не виповнилось 18 років, тому власник не буде присвоєний")
-
-            return`
-        Назва машини: ${this.carBrand}
-        Модель: ${this.model}
-        Колір: ${this.color}
-        Рік випуску: ${this.yearOfProduction}
-        VIN: ${this.VIN}
-        Власник: Не присвоєно, ще не виповнилось 18 років!!!`
-        }
 
         return`
         Назва машини: ${this.carBrand}
@@ -60,25 +49,16 @@ class Car{
         Колір: ${this.color}
         Рік випуску: ${this.yearOfProduction}
         VIN: ${this.VIN}
-        Власник: ${this.owner.showPerson()}`
+        Власник: ${this.owner ? this.owner.showPerson() : ""}`
     }
 }
 
-// let car = new Car("bmw", "ss", "red", 1989, "dsd1254f78f6g45");
-// let person = new Person("Щербина","Павло",33);
-// car.addOwner(person);
-// console.log(car.showCar())
-
-// let car1 = new Car("bmw", "ss", "red", 2004, "dsd1254f78f6g45");
-// let person1 = new Person("Петров","Олександр",18);
-// car1.addOwner(person1);
-// console.log(car1.showCar())
-
-
-let car = new Car("bmw", "s", "red", 2019, "dsd125sasd4f78f6g45");
-car.addOwner("Петров","Віталій",30);
+let car = new Car("bmw", "ss", "red", 1989, "dsd1254f78f6g45");
+let person = new Person("Щербина","Павло",33);
+car.addOwner(person);
 console.log(car.showCar())
 
-let car1 = new Car("mers", "model", "green", 2008, "dsd125sasd4f78f6g45");
-car1.addOwner("Щербина","Павло",33);
+let car1 = new Car("bmw", "ss", "red", 2004, "dsd1254f78f6g45");
+let person1 = new Person("Петров","Олександр",15);
+car1.addOwner(person1);
 console.log(car1.showCar())
