@@ -59,10 +59,11 @@ class Car{
 
     addOwner(person) {
         if (person.age < 18) {
-           return alert("Людині не виповнилось 18 років, тому власник не буде присвоєний")
+            alert("Людині не виповнилось 18 років, тому власник не буде присвоєний")
+            return;
         }
 
-        return this.owner = person;
+        this.owner = person;
     }
 
     showCar() {
@@ -80,10 +81,9 @@ class Car{
 let car = new Car("bmw", "ss", "red", 1989, "dsd1254f78f6g45");
 let person = new Person("Щербина","Павло",33);
 car.addOwner(person);
-// console.log(car.showCar())
 car.showCar()
 
 let car1 = new Car("bmw", "ss", "red", 2004, "dsd1254f78f6g45");
-let person1 = new Person("Петров","Олександр",19);
+let person1 = new Person("Петров","Олександр",17);
 car1.addOwner(person1);
 car1.showCar()
