@@ -14,20 +14,35 @@ class Flat {
    addResidents(person) {
       this.residents.push(person)
    }
+
+   logAllPerson() {
+      console.log("\nApartment:\n");
+      this.residents.forEach((person) => console.log(`${person.name} - ${person.age} years`));
+    }
 }
 
 class House {
    flat = [];
-   
-   addFlat(flat) {
-      if(this.flat.length > 2) {
-         console.log("no")
-      }
-      this.flat.push(flat)
+   maxNumberOfApartments;
+   constructor(maxNumberOfApartments) {
+      this.maxNumberOfApartments = maxNumberOfApartments;
    }
+
+   addFlat(flat) {
+      if(this.flat.length < this.maxNumberOfApartments) {
+         this.flat.push(flat)
+      }
+      // console.log("no")
+   }
+
+   logAllflat() {
+      console.log("\nAll flat:\n");
+      this.flat.forEach((flat) =>  console.log(`${flat.residents.name} - ${flat.residents.age} years`));
+    }
+
 }
 
-let house = new House()
+let house = new House(2)
 
 let flat = new Flat()
 let flat1 = new Flat()
@@ -45,11 +60,15 @@ flat.addResidents(residents2);
 flat1.addResidents(residents3);
 flat1.addResidents(residents4);
 flat2.addResidents(residents4);
-console.log(flat)
+
+flat.logAllPerson()
+flat1.logAllPerson()
+flat2.logAllPerson()
+// console.log(flat)
 
 house.addFlat(flat)
 house.addFlat(flat1)
 house.addFlat(flat2)
-// house.logAllFlat()
+house.logAllflat()
 // house.addFlat(flat)
-console.log(house)
+// console.log(house)
