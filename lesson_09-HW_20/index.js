@@ -67,22 +67,23 @@ class Car{
 
     showCar() {
 
-        return`
+        console.log(`
         Назва машини: ${this.carBrand}
         Модель: ${this.model}
         Колір: ${this.color}
         Рік випуску: ${this.yearOfProduction}
         VIN: ${this.VIN}
-        Власник: ${this.owner ? this.owner.showPerson() : ""}`
+        Власник: ${this.owner ? this.owner.showPerson() : ""}`)
     }
 }
 
 let car = new Car("bmw", "ss", "red", 1989, "dsd1254f78f6g45");
 let person = new Person("Щербина","Павло",33);
 car.addOwner(person);
-console.log(car.showCar())
+// console.log(car.showCar())
+car.showCar()
 
 let car1 = new Car("bmw", "ss", "red", 2004, "dsd1254f78f6g45");
-let person1 = new Person("Петров","Олександр",15);
+let person1 = new Person("Петров","Олександр",19);
 car1.addOwner(person1);
-console.log(car1.showCar())
+car1.showCar()
