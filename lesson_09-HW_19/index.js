@@ -37,7 +37,7 @@ class House {
 
    logAllflat() {
       console.log("\nAll flat:\n");
-      this.flat.forEach((flat) =>  console.log(`${flat.residents.name} - ${flat.residents.age} years`));
+      console.log();
     }
 
 }
