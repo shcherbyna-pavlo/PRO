@@ -29,7 +29,11 @@ class House {
    }
 
    addFlat(flat) {
-      this.flats.length < this.maxNumberOfApartments ? this.flats.push(flat) : console.log("перевищенна кількість квартир")
+      if(this.flats.length < this.maxNumberOfApartments) {
+         this.flats.push(flat)
+      } else {
+         console.log("перевищенна кількість квартир")
+      }
    }
 
    logAllResidents() {
