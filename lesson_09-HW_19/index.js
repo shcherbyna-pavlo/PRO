@@ -11,11 +11,11 @@ class Person {
 class Flat {
    residents = [];
 
-   addResidents(person) {
+   addResident(person) {
       this.residents.push(person)
    }
 
-   logAllPerson() {
+   logAllPersons() {
       console.log("\nApartment:\n");
       this.residents.forEach((person) => console.log(`${person.name} - ${person.age} years`));
     }
@@ -55,16 +55,16 @@ let residents2 = new Person("Max", 30)
 let residents3 = new Person("Mark", 19)
 let residents4 = new Person("Tony", 26)
 
-flat.addResidents(residents);
-flat.addResidents(residents1);
-flat.addResidents(residents2);
-flat1.addResidents(residents3);
-flat1.addResidents(residents4);
-flat2.addResidents(residents4);
+flat.addResident(residents);
+flat.addResident(residents1);
+flat.addResident(residents2);
+flat1.addResident(residents3);
+flat1.addResident(residents4);
+flat2.addResident(residents4);
 
-flat.logAllPerson()
-flat1.logAllPerson()
-flat2.logAllPerson()
+flat.logAllPersons()
+flat1.logAllPersons()
+flat2.logAllPersons()
 
 house.addFlat(flat)
 house.addFlat(flat1)
