@@ -32,12 +32,15 @@ class House {
       if(this.flat.length < this.maxNumberOfApartments) {
          this.flat.push(flat)
       }
-      // console.log("no")
    }
 
+   logAllResidents() {
+      console.log("\nhouse:\n");
+      this.flat.forEach((flat) => flat.residents.forEach(person => console.log(`${person.name} - ${person.age} years`)));
+    }
    logAllflat() {
-      console.log("\nAll flat:\n");
-      console.log();
+      console.log("\nhouse:\n");
+      this.flat.forEach((flat) => console.log(flat.residents));
     }
 
 }
@@ -70,5 +73,6 @@ house.addFlat(flat)
 house.addFlat(flat1)
 house.addFlat(flat2)
 house.logAllflat()
+house.logAllResidents()
 // house.addFlat(flat)
 // console.log(house)
