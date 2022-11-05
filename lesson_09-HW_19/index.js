@@ -44,7 +44,7 @@ class House {
    logAllflat() {
       console.log("\nhouse:\n");
       this.flats.forEach((flat) => console.log(flat.residents));
-    }
+   }
 }
 
 let house = new House(2)
