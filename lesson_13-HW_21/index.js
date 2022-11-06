@@ -1,15 +1,15 @@
-const button = document.querySelector('.ghost');
-const wrapper = document.querySelector('.wrapper');
+const ghost = document.querySelector('.ghost');
+const input = document.querySelector('.input');
 
-button.style.opacity = '0';
+ghost.style.opacity = '0';
 
-const hideElement = (ev) => {
-    if(ev.target.closest('.input')) {
-        button.style.opacity = '1';
-        return;
-    }
-
-    button.style.opacity = '0';
+const showElement = () => {
+    ghost.style.opacity = '1';
 }
 
-wrapper.addEventListener('click', hideElement)
+const hideElement = () => {
+    ghost.style.opacity = '0';
+}
+
+input.addEventListener('focus', showElement)
+input.addEventListener('blur', hideElement)
