@@ -4,4 +4,4 @@ const images = document.getElementById('image');
 let randomImg = arrDogs[Math.floor(Math.random() * arrDogs.length)];
 
 image.src = `./images/${randomImg}`
-image.alt = `${randomImg}`
+image.alt = `${randomImg.replace('.jpeg', "")}`
