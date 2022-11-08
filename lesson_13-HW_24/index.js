@@ -4,11 +4,11 @@ const next = document.querySelector('.next')
 const image = document.getElementById('image');
 
 function slider() {
-    prev.setAttribute('disabled', "")
     
     let count = 0;
     let elArrDogs;
     
+    prev.setAttribute('disabled', "")
     function right () {
         count ++
     
