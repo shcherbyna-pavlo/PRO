@@ -1,11 +1,13 @@
 const arrDogs = ['dog1.jpeg', 'dog2.jpeg', 'dog3.jpeg', 'dog4.jpeg', 'dog5.jpeg', 'dog6.jpeg'];
+
 const prev = document.querySelector('.prev')
 const next = document.querySelector('.next')
+
 const image = document.getElementById('image');
 
 function slider() {
     prev.setAttribute('disabled', "")
-    
+
     let count = 0;
     let elArrDogs;
     
