@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 5fr 1fr;
+            place-items: center;
+            gap: 0.5rem;
+        }
+
+        button {
+            height: 2rem;
+        }
+        .slider {
+         max-width: 500px;
+         height: auto;
+         /* overflow: hidden; */
+        }
+        .slider-line {
+         display: flex;
+        }
+        img {
+            width: 500px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <button class="prev">Prev</button>
+            <div class="slider">
+               <div class="slider-line">
+                  <img id="image" src="./images/dog1.jpeg" alt="dog1">
+                  <img id="image" src="./images/dog2.jpeg" alt="dog2">
+                  <img id="image" src="./images/dog3.jpeg" alt="dog3">
+                  <img id="image" src="./images/dog4.jpeg" alt="dog4">
+                  <img id="image" src="./images/dog5.jpeg" alt="dog5">
+                  <img id="image" src="./images/dog6.jpeg" alt="dog6">
+               </div>
+            </div>
+            <button class="next">Next</button>
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
