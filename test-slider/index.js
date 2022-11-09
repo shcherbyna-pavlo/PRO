@@ -21,6 +21,8 @@ function slider() {
 
     width1 ()
 
+    window.addEventListener('resize', width1)
+
     function right () {
         count ++
     
