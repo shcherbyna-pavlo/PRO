@@ -9,11 +9,10 @@ function slider() {
     
     let count = 0;
     let width;
-    let n = 0;
-    let c = 0
+    let n
+    let c
     function a (ev) {
         c = ev.offsetX;
-        return c
         console.log(c)
     }
     function b (ev) {
@@ -23,7 +22,7 @@ function slider() {
     
     images.forEach((el) => {
         el.addEventListener('mousedown', a)
-        el.addEventListener('mouseup', b)
+        // el.addEventListener('mouseup', b)
         el.addEventListener('dragend', scroll)
     });
 
