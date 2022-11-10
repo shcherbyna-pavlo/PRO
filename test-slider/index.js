@@ -5,56 +5,81 @@ const sliderLine = document.querySelector('.slider-line')
 const slid = document.querySelector('.slider')
 
 function slider() {
-    prev.setAttribute('disabled', "")
-
+    prev.setAttribute('disabled', "");
+    
     let count = 0;
-    let width
+    let width;
+    let n = 0;
+    let c = 0
+    function a (ev) {
+        c = ev.offsetX;
+        return c
+        console.log(c)
+    }
+    function b (ev) {
+        n = ev.offsetX
+        console.log(n)
+    }
+    
+    images.forEach((el) => {
+        el.addEventListener('mousedown', a)
+        el.addEventListener('mouseup', b)
+        el.addEventListener('dragend', scroll)
+    });
 
-    function width1 () {
-        width = slid.offsetWidth
-        console.log(width)
-        images.forEach((el) => {
-            el.style.width = width +"px"
-        })
-        sliderLine.style.width = width*images.length + 'px'
-        translate ()
+    function scroll () {
+        if(n-c >= width/10){
+            right ()
+        };
+        if(n-c <= -(width/10)){
+            left ()
+        };
     }
 
-    width1 ()
+    console.log('вправо', n-c)
+    console.log('вліво', n-c)
 
-    window.addEventListener('resize', width1)
+    function width1 () {
+        width = slid.offsetWidth;
+        images.forEach((el) => {
+            el.style.width = width +"px";
+        })
+        sliderLine.style.width = width*images.length + 'px';
+        translate ();
+    }
+    width1 ();
 
     function right () {
-        count ++
-    
+        count ++;
+        
         if(count === images.length-1) {
-            next.setAttribute('disabled', "")
+            next.setAttribute('disabled', "");
         }
-        prev.removeAttribute('disabled')
-        translate()
+        prev.removeAttribute('disabled');
+        
+        translate();
     }
     
     function left () {
-        count--
-    
+        count--;
+        
         if(count === 0) {
-            prev.setAttribute('disabled', "")
+            prev.setAttribute('disabled', "");
         }
         next.removeAttribute('disabled');
-        translate()
+        
+        translate();
     }
     
     function translate () {
-        sliderLine.style.transform = 'translate(-' + count * width + 'px)'
+        sliderLine.style.transform = 'translate(-' + count * width + 'px)';
     }
-
-    images.forEach((el) => {
-        el.addEventListener('dragend', right)
-    })
     
-    window.addEventListener('resize', width1)
-    prev.addEventListener('click', left)
-    next.addEventListener('click', right)
+    window.addEventListener('resize', width1);
+    prev.addEventListener('click', left);
+    next.addEventListener('click', right);
 }
 
-slider()
+slider();
+
+
