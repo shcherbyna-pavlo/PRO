@@ -45,6 +45,7 @@ function slider() {
         sliderLine.style.transform = 'translate(-' + count * width + 'px)'
     }
 
+    window.addEventListener('resize', width1)
     prev.addEventListener('click', left)
     next.addEventListener('click', right)
 }
