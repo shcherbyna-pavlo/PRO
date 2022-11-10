@@ -17,6 +17,7 @@ function slider() {
             el.style.width = width +"px"
         })
         sliderLine.style.width = width*images.length + 'px'
+        translate ()
     }
 
     width1 ()
@@ -45,6 +46,10 @@ function slider() {
         sliderLine.style.transform = 'translate(-' + count * width + 'px)'
     }
 
+    images.forEach((el) => {
+        el.addEventListener('dragend', right)
+    })
+    
     window.addEventListener('resize', width1)
     prev.addEventListener('click', left)
     next.addEventListener('click', right)
