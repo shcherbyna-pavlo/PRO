@@ -12,27 +12,28 @@ function slider() {
     let n
     let c
     function a (ev) {
-        c = ev.offsetX;
+        c = ev.clientX;
         console.log(c)
     }
     function b (ev) {
-        n = ev.offsetX
+        n = ev.clientX;
         console.log(n)
     }
     
     images.forEach((el) => {
-        el.addEventListener('mousedown', a)
-        // el.addEventListener('mouseup', b)
+        // el.addEventListener('mousedown', a)
+        el.addEventListener('mouseup', b)
         el.addEventListener('dragend', scroll)
     });
 
     function scroll () {
+        right ()
         if(n-c >= width/10){
-            right ()
         };
         if(n-c <= -(width/10)){
             left ()
         };
+        translate ()
     }
 
     console.log('вправо', n-c)
