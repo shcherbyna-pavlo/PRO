@@ -19,5 +19,5 @@ reactionElements.forEach((elem) => container.appendChild(elem));
 const buttons = Array.from(container.getElementsByTagName('button'));
 
 buttons.forEach((el) => {
-   el.addEventListener('click', () => {el.nextSibling.innerHTML++} );
+   el.addEventListener('click', () => {el.nextSibling.innerText++} );
 });
