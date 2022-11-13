@@ -11,26 +11,28 @@ let c= 0
    
          arr.forEach((element, index) => {
             // Array.isArray(element) ? html.insertAdjacentHTML('beforeend', generateList(element).outerHTML) : html.insertAdjacentHTML('beforeend', `<li>${element}</li>`);
-   
             if(!Array.isArray(element)) {
 
                html.insertAdjacentHTML('beforeend', `<li>${c}${element}</li>`)
                
             }
+   
             if(Array.isArray(arr[index+1])) {
                c += (`${element}.`)
                
             }
             if (element === arr.at(-1)) {
-               c.slice(0, c.lenngth - 2)
-
-               if (c.lenngth === 0) {
+               
+               
+               if (c.lenngth === 2) {
                   c = ""
+               } else {
+                  c.slice(0, c.lenngth - 2)
                }
                console.log(c)
             }
-
-
+            
+            
             
             // console.log(c);
             if(Array.isArray(element)) {
