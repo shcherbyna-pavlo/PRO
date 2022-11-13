@@ -1,47 +1,76 @@
+const listOfLists = [1, 2, [1, 2, 3], 3, 4, [1, 2, [1, 2, 3]], 5];
+const body = document.querySelector('body')
 
-let c= 0
-      const listOfLists = [1, 2, [1, 2, 3], 3, 4, [1, 2, [1, 2, 3]], 5];
-      const body = document.querySelector('body')
+body.appendChild(generateList(listOfLists, []))
 
-      body.appendChild(generateList(listOfLists, ""))
+function generateList(arr, b) {
+   let c = b
 
-      function generateList(arr, b) {
-         let c = b
-         const html = document.createElement('ul')
-   
-         arr.forEach((element, index) => {
-            // Array.isArray(element) ? html.insertAdjacentHTML('beforeend', generateList(element).outerHTML) : html.insertAdjacentHTML('beforeend', `<li>${element}</li>`);
-            if(!Array.isArray(element)) {
+   const html = document.createElement('ul')
 
-               html.insertAdjacentHTML('beforeend', `<li>${c}${element}</li>`)
-               
-            }
-   
-            if(Array.isArray(arr[index+1])) {
-               c += (`${element}.`)
-               
-            }
-            if (element === arr.at(-1)) {
-               
-               
-               if (c.lenngth === 2) {
-                  c = ""
-               } else {
-                  c.slice(0, c.lenngth - 2)
-               }
-               console.log(c)
-            }
-            
-            
-            
-            // console.log(c);
-            if(Array.isArray(element)) {
-               html.insertAdjacentHTML('beforeend', generateList(element, b).outerHTML)
-            }
-         });
-         return html
+   arr.forEach((element, index) => {
+      if (!Array.isArray(element)) {
+         html.insertAdjacentHTML('beforeend', `<li>${c.join('')}${element}</li>`)
       }
-      console.log(generateList(listOfLists, ""))
+
+      if (Array.isArray(element)) {
+         c.push(`${arr[index - 1]}.`)
+
+         html.insertAdjacentHTML('beforeend', generateList(element, c).outerHTML)
+      }
+
+      if (index === arr.length - 1) {
+         c.pop()
+      }
+   });
+
+   return html
+}
+
+
+      // const listOfLists = [1, 2, [1, 2, 3], 3, 4, [1, 2, [1, 2, 3]], 5];
+      // const body = document.querySelector('body')
+
+      // body.appendChild(generateList(listOfLists, []))
+
+      // function generateList(arr, b) {
+      //    let c = b
+         
+      //    const html = document.createElement('ul')
+      //    arr.forEach((element, index) => {
+      //       // Array.isArray(element) ? html.insertAdjacentHTML('beforeend', generateList(element).outerHTML) : html.insertAdjacentHTML('beforeend', `<li>${element}</li>`);
+
+      //       if(!Array.isArray(element)) {
+               
+      //          html.insertAdjacentHTML('beforeend', `<li>${c.join('')}${element}</li>`)
+      //          // console.log(html.insertAdjacentHTML('beforeend', `<li>${c}${element}</li>`));
+      //          console.log(c);
+      //       }
+
+      //       if(Array.isArray(element)) {
+      //          c.push(`${arr[index-1]}.`)
+
+      //          html.insertAdjacentHTML('beforeend', generateList(element, c).outerHTML)
+
+               
+      //       }
+      //       if  (index-1 === arr.length-1) {
+      //          // if (c.length <= 2) {
+      //          //    c = ""
+      //          // }
+               
+      //          c.pop()
+               
+      //          // else {
+      //          // }
+
+      //          // console.log(c)
+      //          // return html
+      //       }
+      //    });
+      //   return html
+      // }
+      // console.log(generateList(listOfLists, []))
 
 
 
