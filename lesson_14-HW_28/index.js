@@ -1,45 +1,46 @@
 
-   
-   function f (){
-
+let c= 0
       const listOfLists = [1, 2, [1, 2, 3], 3, 4, [1, 2, [1, 2, 3]], 5];
       const body = document.querySelector('body')
-      let b = ""
-      
-      body.appendChild(generateList(listOfLists))
 
-      function generateList(arr) {
+      body.appendChild(generateList(listOfLists, ""))
+
+      function generateList(arr, b) {
+         let c = b
          const html = document.createElement('ul')
    
          arr.forEach((element, index) => {
             // Array.isArray(element) ? html.insertAdjacentHTML('beforeend', generateList(element).outerHTML) : html.insertAdjacentHTML('beforeend', `<li>${element}</li>`);
    
             if(!Array.isArray(element)) {
-               if(b === "") {
-                  html.insertAdjacentHTML('beforeend', `<li>${element}</li>`)
-                  
-               } else if (b !== "") {
-                  html.insertAdjacentHTML('beforeend', `<li>${b}${element}</li>`)
-               }
-   
-               if(Array.isArray(arr[index+1])) {
-                  console.log(b);
-                  b += `${element}.`
-               }
+
+               html.insertAdjacentHTML('beforeend', `<li>${c}${element}</li>`)
+               
             }
+            if(Array.isArray(arr[index+1])) {
+               c += (`${element}.`)
+               
+            }
+            if (element === arr.at(-1)) {
+               c.slice(0, c.lenngth - 2)
+
+               if (c.lenngth === 0) {
+                  c = ""
+               }
+               console.log(c)
+            }
+
+
             
+            // console.log(c);
             if(Array.isArray(element)) {
-               html.insertAdjacentHTML('beforeend', generateList(element).outerHTML)
+               html.insertAdjacentHTML('beforeend', generateList(element, b).outerHTML)
             }
          });
          return html
       }
-      console.log(generateList(listOfLists))
-      
-   }
-   f()
+      console.log(generateList(listOfLists, ""))
 
-   // generateList(listOfLists)
 
 
 
