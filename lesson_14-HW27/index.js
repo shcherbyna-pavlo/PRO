@@ -1,13 +1,12 @@
-const input = document.querySelector('#url')
-const button = document.querySelector('[type="button"]')
+const input = document.querySelector('#url');
+const button = document.querySelector('[type="button"]');
 
-console.log(input, button);
-
-button.addEventListener('click', a())
-
-console.log(location.href);
-console.log(input.target.value);
+button.addEventListener('click', a);
 
 function a() {
-   input.target.value
+   if (input.value.includes('http')) {
+      location.assign(input.value);
+   } else {
+      location.assign(`https://${input.value}`);
+   }
 }
