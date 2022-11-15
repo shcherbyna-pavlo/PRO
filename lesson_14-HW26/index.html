@@ -15,7 +15,7 @@
 
         .container {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 500px 500px 500px;
             place-items: center;
             gap: 1rem;
         }
@@ -36,7 +36,11 @@
         button {
             padding: 0.5rem 2rem;
             margin: 1rem 0;
+            text-align: center;
             cursor: pointer;
+        }
+        #buy-button{
+            visibility: hidden;
         }
     </style>
 </head>
@@ -58,14 +62,14 @@
                 <li data-product-id="4">Beef - Ox Tongue</li>
                 <li data-product-id="5">Beef - Bones, Marrow</li> -->
             </ul>
-            <div>
-                <!-- <div id="description">
-                    Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec
+            <div class="info">
+                <div id="description">
+                    <!-- Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec
                     vitae
-                    nisi.
+                    nisi. -->
                 </div>
                 <button id="buy-button">Buy</button>
-                <div id="message">The product has been added to the basket</div> -->
+                <div id="message"></div>
             </div>
         </div>
     </div>
