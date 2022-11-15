@@ -160,13 +160,13 @@ const categoriesSelection = function (ev) {
 
 const productsSelection = function(ev) {
   let productId = ev.target.dataset['productId'];
-
-  info.style.visibility = 'visible';
-  buyButton.style.visibility = 'visible';
   
   products.forEach((el) => {
     if (`${el.id}` === productId) description.innerText = el.description;
   });
+
+  info.style.visibility = 'visible';
+  buyButton.style.visibility = 'visible';
 };
 
 const buy = function () {
