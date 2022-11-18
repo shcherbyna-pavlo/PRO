@@ -42,6 +42,29 @@
         #buy-button{
             visibility: hidden;
         }
+        .count {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .amount {
+            /* width: 50px;
+            height: 50px; */
+            padding: 15px 15px;
+            border: 1px solid black;
+            margin: 10px 15px;
+            cursor: default;
+        }
+        .plus, .minus {
+            font-size: 35px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            /* align-items: flex-start; */
+        }
     </style>
 </head>
 
@@ -70,10 +93,44 @@
                 </div>
                 <button id="buy-button">Buy</button>
                 <div id="message"></div>
+                <form required="required">
+                    <label for="name">
+                        ПІБ
+                        <input type="text" id="name">
+                    </label>
+                    <select>
+                        <option value="">Вкажіть місто</option>
+                        <option value="Odesa">Одеса</option>
+                        <option value="Kyiv">Київ</option>
+                        <option value="Mykolayiv">МиколаЇв</option>
+                        <option value="Kherson">Херсон</option>
+                    </select>
+                    <select>
+                        <option value="">виберіть відділення НП</option>
+                        <option value="1">№1</option>
+                        <option value="2">№2</option>
+                        <option value="3">№3</option>
+                        <option value="4">№4</option>
+                        <option value="5">№5</option>
+                    </select>
+                    <label for="bank">
+                        <input type="radio" name="bank" id="bank">
+                        оплата на банківську картку
+                    </label>
+                    <label for="postpaid">
+                        <input type="radio" name="bank" id="postpaid">
+                        післяплата
+                    </label>
+                    <div class="count">
+                        <span class="minus">-</span>
+                        <span class="amount">1</span>
+                        <span class="plus">+</span>
+                    </div>
+                    <button class="gg" type="">Підтвердити</button>
+                </form>
             </div>
         </div>
     </div>
-
     <script src="./index.js"></script>
 </body>
 

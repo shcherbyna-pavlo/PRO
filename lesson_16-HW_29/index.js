@@ -179,3 +179,25 @@ const categories = [
   categoriesList.addEventListener('click', categoriesSelection);
   productsList.addEventListener('click', productsSelection);
   buyButton.addEventListener('click', buy);
+
+
+  const minus = document.querySelector('.minus')
+  const plus = document.querySelector('.plus')
+  const amount = document.querySelector('.amount')
+  const gg = document.querySelector('.gg')
+  
+  function plu(){
+    amount.innerText++
+  }
+
+  function min(){
+    if(amount.innerText > 1) amount.innerText--
+    
+  }
+
+  function add(ev){
+    ev.preventDefault()
+  }
+  minus.addEventListener('click', min)
+  plus.addEventListener('click', plu)
+  gg.addEventListener('click', add)
