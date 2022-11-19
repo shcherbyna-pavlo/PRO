@@ -195,9 +195,50 @@ const categories = [
     
   }
 
+  
+  
   function add(ev){
+    const valide = document.querySelectorAll('.valide')
+    const xer = document.querySelectorAll('.xer')
+    
     ev.preventDefault()
+    valide.forEach((el) => {
+      el.style.border = '1px solid black';
+      if(el.value.trim() === "") {
+        el.style.border = '1px solid red';
+      }
+    })
+    const isCheckboxOrRadio = (type) => ['radio'].includes(type);
+    const registration = document.forms.registration
+    const fjfjf = {}
+
+    for (let el of registration) {
+      const name = el.name
+      const type = el.type
+      const checked = el.checked
+      const value = el.value
+      if(name) {
+        if(isCheckboxOrRadio(type)) {
+          fjfjf[value] = checked
+        } else {
+          fjfjf[name] = value
+        }
+      }
+    }
+    console.log(fjfjf);
+    // console.warn(registration);
+    // console.warn(document.forms.registration)
+    // const ffff = {}
+    // xer.forEach((el) => {
+      
+    // })
+
+    const json = document.querySelector('.json')
+    
+    json.innerHTML = `<pre>${JSON.stringify(fjfjf.name, 4)}<pre>`
   }
+
   minus.addEventListener('click', min)
   plus.addEventListener('click', plu)
   gg.addEventListener('click', add)
+
