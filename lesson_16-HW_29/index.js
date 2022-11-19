@@ -129,75 +129,116 @@ const categories = [
   ];
   
   
-  const categoriesList = document.getElementById('categories');
-  const productsList = document.getElementById('products')
-  const product = document.getElementsByClassName('product')
-  const description = document.getElementById('description');
-  const buyButton = document.getElementById('buy-button');
-  const message = document.getElementById('message');
-  
-  const info = document.querySelector('.info');
-  
-  
-  const categoriesSelection = function (ev) {
-    let productArray = Array.from(product);
-    let categoryId = ev.target.dataset['categoryId'];
-    
-    if (ev.target.tagName === 'LI') {
-      productArray.forEach((el) => {
-        el.remove()
-      });
-      
-      products.forEach((el) => {
-        if (`${el.category_id}` === categoryId) {
-          productsList.insertAdjacentHTML('beforeend', `<li class="product" data-product-id="${el.id}">${el.name}</li>`)
-        };
-      });
-    };
-    info.style.visibility = 'hidden';
-    buyButton.style.visibility = 'hidden';
-  };
-  
-  const productsSelection = function(ev) {
-    let productId = ev.target.dataset['productId'];
-    
-    products.forEach((el) => {
-      if (`${el.id}` === productId) description.innerText = el.description;
+const categoriesList = document.getElementById('categories');
+const productsList = document.getElementById('products')
+const product = document.getElementsByClassName('product')
+const description = document.getElementById('description');
+const buyButton = document.getElementById('buy-button');
+const message = document.getElementById('message');
+
+const info = document.querySelector('.info');
+
+
+const categoriesSelection = function (ev) {
+  let productArray = Array.from(product);
+  let categoryId = ev.target.dataset['categoryId'];
+
+  if (ev.target.tagName === 'LI') {
+    productArray.forEach((el) => {
+      el.remove()
     });
-  
-    info.style.visibility = 'visible';
-    buyButton.style.visibility = 'visible';
+
+    products.forEach((el) => {
+      if (`${el.category_id}` === categoryId) {
+        productsList.insertAdjacentHTML('beforeend', `<li class="product" data-product-id="${el.id}">${el.name}</li>`)
+      };
+    });
   };
-  
-  const buy = function () {
-    message.innerText = 'The product has been added to the basket';
-  
-    setTimeout(()=>location.reload(), 2000);
-  };
-  
-  
-  categoriesList.addEventListener('click', categoriesSelection);
-  productsList.addEventListener('click', productsSelection);
-  buyButton.addEventListener('click', buy);
+  info.style.visibility = 'hidden';
+  buyButton.style.visibility = 'hidden';
+};
+
+const productsSelection = function (ev) {
+  let productId = ev.target.dataset['productId'];
+
+  products.forEach((el) => {
+    if (`${el.id}` === productId) description.innerText = el.description;
+  });
+
+  info.style.visibility = 'visible';
+  buyButton.style.visibility = 'visible';
+};
+
+const buy = function () {
+  message.innerText = 'The product has been added to the basket';
+  customer.style.visibility = 'visible'
+  // setTimeout(()=>location.reload(), 2000);
+};
 
 
-  const minus = document.querySelector('.minus')
-  const plus = document.querySelector('.plus')
-  const amount = document.querySelector('.amount')
-  const gg = document.querySelector('.gg')
-  
-  function plu(){
-    amount.innerText++
+categoriesList.addEventListener('click', categoriesSelection);
+productsList.addEventListener('click', productsSelection);
+buyButton.addEventListener('click', buy);
+
+
+const minus = document.querySelector('.minus')
+const plus = document.querySelector('.plus')
+const amount = document.querySelector('.amount')
+const gg = document.querySelector('.gg')
+const customer = document.querySelector('.customer')
+
+function plu() {
+  amount.innerText++
+}
+
+function min() {
+  if (amount.innerText > 1) amount.innerText--
+
+}
+
+
+
+function add(ev) {
+  const valide = document.querySelectorAll('.valide')
+  const xer = document.querySelectorAll('.xer')
+
+  ev.preventDefault()
+  valide.forEach((el) => {
+    el.style.border = '1px solid black';
+    if (el.value.trim() === "") {
+      el.style.border = '1px solid red';
+    }
+    // if(registration.input.name)
+  })
+  // const isCheckboxOrRadio = (type) => ['radio'].includes(type);
+  const customerData = document.forms.customerData
+  const fjfjf = {}
+
+  if (customerData.name.value.trim() !== '' && customerData.city.value !== '' && customerData.np.value !== '') {
+    console.log('fdfdfdff');
   }
 
-  function min(){
-    if(amount.innerText > 1) amount.innerText--
-    
+  for (let el of customerData) {
+    const name = el.name
+    const type = el.type
+    const checked = el.checked
+    const value = el.value
+    if (name) {
+      if (['radio', 'checkbox'].includes(type)) {
+        fjfjf[value] = checked
+      } else {
+        fjfjf[name] = value
+      }
+    }
   }
 
-  function add(ev){
-    ev.preventDefault()
-  }
-  minus.addEventListener('click', min)
-  plus.addEventListener('click', plu)
-  gg.addEventListener('click', add)
+
+  const json = document.querySelector('.json')
+
+  json.innerHTML = `<pre>${JSON.stringify(customerData.name, 4)}<pre>`
+}
+
+minus.addEventListener('click', min)
+plus.addEventListener('click', plu)
+gg.addEventListener('click', add)
+

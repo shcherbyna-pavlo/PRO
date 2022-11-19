@@ -16,7 +16,7 @@
         .container {
             display: grid;
             grid-template-columns: 500px 500px 500px;
-            place-items: center;
+            place-items: normal start;
             gap: 1rem;
         }
 
@@ -63,6 +63,8 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+            visibility: hidden;
+            margin-top: 50px;
             /* align-items: flex-start; */
         }
     </style>
@@ -93,19 +95,19 @@
                 </div>
                 <button id="buy-button">Buy</button>
                 <div id="message"></div>
-                <form required="required">
+                <form class="customer" name="customerData">
                     <label for="name">
                         ПІБ
-                        <input type="text" id="name">
+                        <input class="valide xer" type="text" id="name" name = "name">
                     </label>
-                    <select>
+                    <select class="valide xer" name = "city">
                         <option value="">Вкажіть місто</option>
                         <option value="Odesa">Одеса</option>
                         <option value="Kyiv">Київ</option>
                         <option value="Mykolayiv">МиколаЇв</option>
                         <option value="Kherson">Херсон</option>
                     </select>
-                    <select>
+                    <select class="valide xer" name = "np">
                         <option value="">виберіть відділення НП</option>
                         <option value="1">№1</option>
                         <option value="2">№2</option>
@@ -114,11 +116,11 @@
                         <option value="5">№5</option>
                     </select>
                     <label for="bank">
-                        <input type="radio" name="bank" id="bank">
+                        <input class="xer" checked type="radio" name="bank" id="bank" value="bank">
                         оплата на банківську картку
                     </label>
                     <label for="postpaid">
-                        <input type="radio" name="bank" id="postpaid">
+                        <input class="xer" type="radio" name="bank" id="postpaid" value="postpaid">
                         післяплата
                     </label>
                     <div class="count">
@@ -128,6 +130,7 @@
                     </div>
                     <button class="gg" type="">Підтвердити</button>
                 </form>
+                <span class="json"></span>
             </div>
         </div>
     </div>
