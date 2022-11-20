@@ -16,7 +16,7 @@
         .container {
             display: grid;
             grid-template-columns: 500px 500px 500px;
-            place-items: center;
+            place-items: normal start;
             gap: 1rem;
         }
 
@@ -63,6 +63,9 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+            /* visibility: hidden; */
+            opacity: 0;
+            margin-top: 50px;
             /* align-items: flex-start; */
         }
     </style>
@@ -93,19 +96,19 @@
                 </div>
                 <button id="buy-button">Buy</button>
                 <div id="message"></div>
-                <form name="registration">
+                <form class="customer" name="customerData">
                     <label for="name">
                         ПІБ
-                        <input class="valide xer" type="text" id="name" name = "name">
+                        <input class="valide inputValue" type="text" id="name" name = "name">
                     </label>
-                    <select class="valide xer" name = "city">
+                    <select class="valide inputValue" name = "city">
                         <option value="">Вкажіть місто</option>
                         <option value="Odesa">Одеса</option>
                         <option value="Kyiv">Київ</option>
                         <option value="Mykolayiv">МиколаЇв</option>
                         <option value="Kherson">Херсон</option>
                     </select>
-                    <select class="valide xer" name = "np">
+                    <select class="valide inputValue" name = "np">
                         <option value="">виберіть відділення НП</option>
                         <option value="1">№1</option>
                         <option value="2">№2</option>
@@ -114,23 +117,25 @@
                         <option value="5">№5</option>
                     </select>
                     <label for="bank">
-                        <input class="xer" checked type="radio" name="bank" id="bank" value="bank">
+                        <input class="inputValue" checked type="radio" name="bank" id="bank" value="bank">
                         оплата на банківську картку
                     </label>
                     <label for="postpaid">
-                        <input class="xer" type="radio" name="bank" id="postpaid" value="postpaid">
+                        <input class="inputValue" type="radio" name="bank" id="postpaid" value="postpaid">
                         післяплата
                     </label>
                     <div class="count">
                         <span class="minus">-</span>
-                        <span class="amount">1</span>
+                        <span class="amount"></span>
                         <span class="plus">+</span>
                     </div>
-                    <button class="gg" type="">Підтвердити</button>
+                    <div class="price"></div>
+                    <button class="сonfirmation" type="submit">Підтвердити</button>
+                    <div class="messageErorr"></div>
                 </form>
-                <span class="json"></span>
             </div>
         </div>
+        <span class="json"></span>
     </div>
     <script src="./index.js"></script>
 </body>
