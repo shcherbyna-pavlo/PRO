@@ -282,6 +282,8 @@ function add(ev) {
   } else {
     json.innerHTML = `<pre>${JSON.stringify(orderInfo)}<pre>`;
   }
+
+  setTimeout(()=>location.reload(), 2000);
 }
 
 minus.addEventListener("click", min);
