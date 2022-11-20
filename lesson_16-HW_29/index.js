@@ -277,7 +277,7 @@ function add(ev) {
   orderInfo.price = price.innerText.replace("Сума Вашего замовлення ", "");
   orderInfo.Date = new Date();
 
-  if (customerData.name.value.trim() === "" || customerData.city.value === "" || customerData.np.value === "") {
+  if (customerData.name.value.trim() === "" || customerData.city.value === "" || customerData.post.value === "") {
     messageErorr.innerText = "Заповніть коректно форму";
   } else {
     json.innerHTML = `<pre>${JSON.stringify(orderInfo)}<pre>`;
