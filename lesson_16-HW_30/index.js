@@ -6,33 +6,44 @@ const button = document.querySelector('button')
 const table = document.querySelector('.table')
 
 const obj = {};
-function add(ev) {
-   ev.preventDefault();
+let p =[]
 
-   for(let el of registrationForm) {
-      const name = el.name;
-      const type = el.type;
-      const checked = el.checked;
-      const value = el.value;
-      
-      if (name) {
-         if (["radio", "checkbox"].includes(type)) {
-            obj[value] = checked;
-         } else {
-            obj[name] = value;
+function add(ev) {
+
+   ev.preventDefault();
+   if(table.childNodes){
+
+      for(let el of registrationForm) {
+         const name = el.name;
+         const type = el.type;
+         const checked = el.checked;
+         const value = el.value;
+         
+         if (name) {
+            if (["radio", "checkbox"].includes(type)) {
+               obj[value] = checked;
+   
+               if(checked === true) {
+                  if(name === 'Language'){
+                     gg(value)
+                  }else {
+                     table.insertAdjacentHTML("beforeend", `<tr><td>${name}</td><td>${value}</td></tr>`)
+               }
+            }
+          } else {
+               obj[name] = value;
+               table.insertAdjacentHTML("beforeend", `<tr><td>${name}</td><td>${value}</td></tr>`)
+            }
          }
       }
-   }
-
-   for(let i = 1; i<10;i++){
-      table.insertAdjacentHTML("beforeend", `<tr></tr>`)
-      let tr = document.querySelector('tr')
-      for(let j=1; j<10; j++){
-        tr.insertAdjacentHTML("beforeend", `<td>${obj.name}</td>`)
+     function gg(Languages) {
+      p.push(Languages)
       }
+   
+      table.insertAdjacentHTML("beforeend", `<tr><td>Languages</td><td>${p.join(', ')}</td></tr>`)
    }
+   registrationForm.style.display = "none"
 }
 
 button.addEventListener('click', add)
-console.log(obj);
 
