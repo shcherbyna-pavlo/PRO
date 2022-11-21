@@ -5,13 +5,90 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
+   <style>
+      .form {
+         display: flex;
+         flex-direction: column;
+         width: 300px;
+         gap: 20px;
+      }
+      p {
+         margin: 5px;
+      }
+   </style>
 </head>
 <body>
-   <form action="">
+   <form class="form" name="registrationForm"  action="#">
+      <div>
+         <label for="name">Name</label>
+         <input type="text" name="name" id="name">
+      </div>
+      <div>
+         <label for="birth">
+            Date of birth
+         </label>
+         <input type="text" name="Date of birth" id="birth" placeholder="29.09.2020">
+      </div>
+      <div>
+         <label for="">
+            <p>Sex:</p>
+            <label for="male">
+               male 
+               <input type="radio" name="sex" value="male">
+            </label>
+            <label for="female">
+               female
+               <input type="radio" name="sex" value="female">
+            </label>
+         </label>
+      </div>
+      <select name="City">
+         <option value="">City</option>
+         <option value="City1">City1</option>
+         <option value="City2">City2</option>
+         <option value="City3">City3</option>
+         <option value="City4">City4</option>
+      </select>
+      <div>
+         Address
+         <textarea name="Address" id="" cols="30" rows="10"></textarea>
+      </div>
       <label for="">
-         Name
-         <input type="text">
+         <p>Languages ​​he knows:</p>
+         <label for="Ukrainian">
+            Ukrainian
+            <input type="checkbox" name="Language" id="Ukrainian" value="Ukrainian">
+         </label> <br>
+         <label for="Polish">
+            Polish
+            <input type="checkbox" name="Language" id="Polish" value="Polish">
+         </label><br>
+         <label for="Lithuanian">
+            Lithuanian
+            <input type="checkbox" name="Language" id="Lithuanian" value="Lithuanian">
+         </label><br>
+         <label for="Latvian">
+            Latvian
+            <input type="checkbox" name="Language" id="Latvian" value="Latvian">
+         </label><br>
+         <label for="Estonian">
+            Estonian
+            <input type="checkbox" name="Language" id="Estonian" value="Estonian">
+         </label><br>
+         <label for="English">
+            English
+            <input type="checkbox" name="Language" id="English" value="English">
+         </label><br>
+         <label for="Spanish">
+            Spanish
+            <input type="checkbox" name="Language" id="Spanish" value="Spanish">
+         </label><br>
+         <label for="German">
+            German
+            <input type="checkbox" name="Language" id="German" value="German">
+         </label>
       </label>
+      <button>Save</button>
    </form>
 </body>
 </html>
