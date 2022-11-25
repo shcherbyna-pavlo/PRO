@@ -209,6 +209,7 @@ const categories = [
     products.forEach((el) => {
       if (description.innerText === el.description) {
         orderAmount(el.price);
+        orderInfoAdd(el.description,el.name)
       }
     });
     customer.style.opacity = "1";
@@ -245,27 +246,47 @@ const categories = [
   function orderAmount(prices) {
     price.innerText = `Сума Вашего замовлення ${prices * amount.innerText} UAH`;
   }
+
+  // function orderInfoAdd(description,name) {
+  //   let nameProduct = name;
+  //   let descriptionProduct = description;
+  // }
+  
   let order = 0;
-  function add(ev) {
+  let b = []
+  
+  for (var i = 0; i < localStorage.length; i++) {
+    if(!isNaN(Number(localStorage.key(i)))) {
+
+      b.push(+(localStorage.key(i)))
+      console.log(localStorage.key(i));
+    }
+  }
+  b.sort((a,b) => {
+   return a - b
+  })
+    order = b[b.length-1]
+
+    function add(ev) {
     ev.preventDefault();
-  
+    
     const orderInfo = {};
-  
+    
     messageErorr.innerText = "";
-  
+    
     valide.forEach((el) => {
       el.style.border = "1px solid black";
       if (el.value.trim() === "") {
         el.style.border = "1px solid red";
       }
     });
-  
+    
     for (let el of customerData) {
       const name = el.name;
       const type = el.type;
       const checked = el.checked;
       const value = el.value;
-  
+      
       if (name) {
         if (["radio", "checkbox"].includes(type)) {
           orderInfo[value] = checked;
@@ -276,25 +297,21 @@ const categories = [
     }
     orderInfo.price = price.innerText.replace("Сума Вашего замовлення ", "");
     orderInfo.Date = new Date();
-   
+    // orderInfo.nameProduct = nameProduct
+    
     if (customerData.name.value.trim() === "" || customerData.city.value === "" || customerData.post.value === "") {
-        messageErorr.innerText = "Заповніть коректно форму";
+      messageErorr.innerText = "Заповніть коректно форму";
     } else {
-        //   json.innerHTML = `<pre>${JSON.stringify(orderInfo)}<pre>`;
-        order++
-        localStorage.setItem(order, JSON.stringify(orderInfo))
-        localStorage.getItem(order)
-        // setTimeout(()=>location.reload(), 2000);
-       
+      //   json.innerHTML = `<pre>${JSON.stringify(orderInfo)}<pre>`;
+      localStorage.setItem('rrrr',++order)
+      localStorage.setItem(localStorage.getItem('rrrr'), JSON.stringify(orderInfo))
+      // localStorage.getItem(order)
+      // setTimeout(()=>location.reload(), 2000);
+      
     }
   }
-  let b = []
-  for (var i = 0; i < localStorage.length; i++) {
-    b.push(+(localStorage.key(i)))
-  }
-//   b.sort(a,b=>a-b)
-console.log(b.sort((a,b)=> a - b));
-console.log(b);
+// console.log(b.sort((a,b)=> a - b));
+// console.log(b);
   minus.addEventListener("click", min);
   plus.addEventListener("click", plu);
   сonfirmation.addEventListener("click", add);
