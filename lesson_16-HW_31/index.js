@@ -230,6 +230,13 @@ const categories = [
   const json = document.querySelector(".json");
   
   const customerData = document.forms.customerData;
+
+  const orders = document.querySelector('#orders');
+  const myOrders = document.querySelector('.myOrders');
+
+  // const orderNumb = document.getElementsByClassName('orderNumb');
+  const infoOrder = document.getElementsByClassName('infoOrder');
+  const infoProduct = document.getElementsByClassName('infoProduct');
   
   amount.innerText = 1;
   
@@ -247,27 +254,32 @@ const categories = [
     price.innerText = `Сума Вашего замовлення ${prices * amount.innerText} UAH`;
   }
 
-  // function orderInfoAdd(description,name) {
-  //   let nameProduct = name;
-  //   let descriptionProduct = description;
-  // }
+  let nameProduct;
+  let descriptionProduct
+
+  function orderInfoAdd(description,name) {
+    nameProduct = name;
+    descriptionProduct = description;
+  }
   
   let order = 0;
-  let b = []
-  
+  let b = [order]
+
   for (var i = 0; i < localStorage.length; i++) {
     if(!isNaN(Number(localStorage.key(i)))) {
-
       b.push(+(localStorage.key(i)))
       console.log(localStorage.key(i));
     }
   }
-  b.sort((a,b) => {
-   return a - b
-  })
-    order = b[b.length-1]
 
-    function add(ev) {
+  b.sort((a,b) => {
+    return a - b
+  })
+  order = b[b.length-1]
+  console.log(order);
+  
+
+  function add(ev) {
     ev.preventDefault();
     
     const orderInfo = {};
@@ -282,10 +294,8 @@ const categories = [
     });
     
     for (let el of customerData) {
-      const name = el.name;
-      const type = el.type;
-      const checked = el.checked;
-      const value = el.value;
+
+      const {name, type, checked, value} = el
       
       if (name) {
         if (["radio", "checkbox"].includes(type)) {
@@ -295,24 +305,78 @@ const categories = [
         }
       }
     }
+
     orderInfo.price = price.innerText.replace("Сума Вашего замовлення ", "");
     orderInfo.Date = new Date();
-    // orderInfo.nameProduct = nameProduct
+    orderInfo.nameProduct = nameProduct
+    orderInfo.descriptionProduct = descriptionProduct
+
+    localStorage.setItem('rrrr',++order)
+    
+    orderInfo.id = order;
     
     if (customerData.name.value.trim() === "" || customerData.city.value === "" || customerData.post.value === "") {
       messageErorr.innerText = "Заповніть коректно форму";
     } else {
       //   json.innerHTML = `<pre>${JSON.stringify(orderInfo)}<pre>`;
-      localStorage.setItem('rrrr',++order)
       localStorage.setItem(localStorage.getItem('rrrr'), JSON.stringify(orderInfo))
+
+      // orders.insertAdjacentHTML('beforeend', 
+      // `<div class="order">
+      // Номер замовлення: ${orderInfo.id}
+      // Сума замовлення: ${orderInfo.price}
+      // Дата: ${orderInfo.Date}
+      // </div>`)
       // localStorage.getItem(order)
-      // setTimeout(()=>location.reload(), 2000);
+      setTimeout(()=>location.reload(), 2000);
+    }
+    
+  }
+  
+  function orrrr() {
+    categoriesList.style.display = 'none'
+
+    // orders.removeChild(orders.firstChild)
+    while (orders.firstChild) {
+      orders.removeChild(orders.firstChild);
+    }
+    
+    for (var i = b.length; i >= 1; i--) {
       
+      if(!isNaN(Number(b[i]))) {
+
+        let objOrder = JSON.parse(localStorage.getItem(b[i]))
+        
+        if(Number(b[i]) === objOrder.id) {
+         
+        orders.insertAdjacentHTML('beforeend', 
+        `<div data-id="${objOrder.id}" class="orderNumb">
+        Номер замовлення: ${objOrder.id}
+        Сума замовлення: ${objOrder.price}
+        Дата: ${objOrder.Date}
+        </div>`)
+
+        // infoOrder.insertAdjacentHTML('beforeend', 
+        // `<div class="infoOrderChild">
+        // Номер замовлення: ${objOrder.id}
+        // Сума замовлення: ${objOrder.price}
+        // Дата: ${objOrder.Date}
+        // </div>`)
+
+        // infoProduct.insertAdjacentHTML('beforeend', 
+        // `<div class="infoProductChild">
+        // Номер замовлення: ${objOrder.nameProduct}
+        // Сума замовлення: ${objOrder.price}
+        // Дата: ${objOrder.Date}
+        // </div>`)
+        }
+      }
     }
   }
-// console.log(b.sort((a,b)=> a - b));
-// console.log(b);
+
   minus.addEventListener("click", min);
   plus.addEventListener("click", plu);
   сonfirmation.addEventListener("click", add);
+
+  myOrders.addEventListener("click", orrrr);
   
