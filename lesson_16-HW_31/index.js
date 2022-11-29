@@ -231,12 +231,16 @@ const categories = [
   
   const customerData = document.forms.customerData;
 
-  const orders = document.querySelector('#orders');
+  const orders = document.getElementById('orders');
   const myOrders = document.querySelector('.myOrders');
-
+  const infoOrderChild = document.getElementsByClassName('infoOrderChild')
+  
   // const orderNumb = document.getElementsByClassName('orderNumb');
-  const infoOrder = document.getElementsByClassName('infoOrder');
-  const infoProduct = document.getElementsByClassName('infoProduct');
+  const infoOrder = document.querySelector('.infoOrder');
+  const infoProduct = document.querySelector('.infoProduct');
+
+  const orderNumb = document.querySelector('.orderNumb')
+
   
   amount.innerText = 1;
   
@@ -253,10 +257,10 @@ const categories = [
   function orderAmount(prices) {
     price.innerText = `Сума Вашего замовлення ${prices * amount.innerText} UAH`;
   }
-
+  
   let nameProduct;
   let descriptionProduct
-
+  
   function orderInfoAdd(description,name) {
     nameProduct = name;
     descriptionProduct = description;
@@ -264,21 +268,21 @@ const categories = [
   
   let order = 0;
   let b = [order]
-
+  
   for (var i = 0; i < localStorage.length; i++) {
     if(!isNaN(Number(localStorage.key(i)))) {
       b.push(+(localStorage.key(i)))
       console.log(localStorage.key(i));
     }
   }
-
+  
   b.sort((a,b) => {
     return a - b
   })
   order = b[b.length-1]
   console.log(order);
   
-
+  
   function add(ev) {
     ev.preventDefault();
     
@@ -294,7 +298,7 @@ const categories = [
     });
     
     for (let el of customerData) {
-
+      
       const {name, type, checked, value} = el
       
       if (name) {
@@ -305,12 +309,12 @@ const categories = [
         }
       }
     }
-
+    
     orderInfo.price = price.innerText.replace("Сума Вашего замовлення ", "");
     orderInfo.Date = new Date();
     orderInfo.nameProduct = nameProduct
     orderInfo.descriptionProduct = descriptionProduct
-
+    
     localStorage.setItem('rrrr',++order)
     
     orderInfo.id = order;
@@ -320,7 +324,7 @@ const categories = [
     } else {
       //   json.innerHTML = `<pre>${JSON.stringify(orderInfo)}<pre>`;
       localStorage.setItem(localStorage.getItem('rrrr'), JSON.stringify(orderInfo))
-
+      
       // orders.insertAdjacentHTML('beforeend', 
       // `<div class="order">
       // Номер замовлення: ${orderInfo.id}
@@ -335,7 +339,7 @@ const categories = [
   
   function orrrr() {
     categoriesList.style.display = 'none'
-
+    
     // orders.removeChild(orders.firstChild)
     while (orders.firstChild) {
       orders.removeChild(orders.firstChild);
@@ -344,39 +348,48 @@ const categories = [
     for (var i = b.length; i >= 1; i--) {
       
       if(!isNaN(Number(b[i]))) {
-
+        
         let objOrder = JSON.parse(localStorage.getItem(b[i]))
         
         if(Number(b[i]) === objOrder.id) {
-         
-        orders.insertAdjacentHTML('beforeend', 
-        `<div data-id="${objOrder.id}" class="orderNumb">
-        Номер замовлення: ${objOrder.id}
-        Сума замовлення: ${objOrder.price}
-        Дата: ${objOrder.Date}
-        </div>`)
-
-        // infoOrder.insertAdjacentHTML('beforeend', 
-        // `<div class="infoOrderChild">
-        // Номер замовлення: ${objOrder.id}
-        // Сума замовлення: ${objOrder.price}
-        // Дата: ${objOrder.Date}
-        // </div>`)
-
-        // infoProduct.insertAdjacentHTML('beforeend', 
-        // `<div class="infoProductChild">
-        // Номер замовлення: ${objOrder.nameProduct}
-        // Сума замовлення: ${objOrder.price}
-        // Дата: ${objOrder.Date}
-        // </div>`)
+          
+          orders.insertAdjacentHTML('beforeend', 
+          `<div data-id="${objOrder.id}" class="orderNumb">
+          Номер замовлення: ${objOrder.id}
+          Сума замовлення: ${objOrder.price}
+          Дата: ${objOrder.Date}
+          </div>`)
+          
+          infoOrder.insertAdjacentHTML('beforeend', 
+          `<div data-id-info="${objOrder.id}" class="infoOrderChild">
+          Номер замовлення: wrvtvrvsertv${objOrder.id}
+          Сума замовлення: ewvevwetvwevtwrtv${objOrder.price}
+          Дата: ${objOrder.Date}
+          </div>`)
+          
+          infoProduct.insertAdjacentHTML('beforeend', 
+          `<div data-id-infoProd="${objOrder.id}" class="infoProductChild">
+          Номер замовлення: ${objOrder.nameProduct}
+          Сума замовлення: ${objOrder.price}
+          Дата: ${objOrder.Date}
+          </div>`)
         }
       }
     }
   }
 
-  minus.addEventListener("click", min);
-  plus.addEventListener("click", plu);
-  сonfirmation.addEventListener("click", add);
+  function innffo (ev) {
+    Array.from(infoOrderChild).forEach((el) => {
+      if(ev.target.dataset['id'] === el.dataset['idInfo']) {
+        el.style.display = 'block'
+      }
+  })
+}
 
-  myOrders.addEventListener("click", orrrr);
-  
+
+orders.addEventListener('click', innffo)
+minus.addEventListener("click", min);
+plus.addEventListener("click", plu);
+сonfirmation.addEventListener("click", add);
+
+myOrders.addEventListener("click", orrrr);
