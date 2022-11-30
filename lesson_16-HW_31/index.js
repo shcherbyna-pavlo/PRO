@@ -209,7 +209,7 @@ const categories = [
     products.forEach((el) => {
       if (description.innerText === el.description) {
         orderAmount(el.price);
-        orderInfoAdd(el.description,el.name)
+        // orderInfoAdd(el.description,el.name)
       }
     });
     customer.style.opacity = "1";
@@ -252,20 +252,24 @@ const categories = [
   //   let descriptionProduct = description;
   // }
   
+
+
   let order = 0;
   let b = []
   
   for (var i = 0; i < localStorage.length; i++) {
-    if(!isNaN(Number(localStorage.key(i)))) {
-
-      b.push(+(localStorage.key(i)))
-      console.log(localStorage.key(i));
-    }
+    // if(!isNaN(Number(localStorage.key(i)))) {
+    // }
+    b.push((localStorage.key(i)))
   }
+  
   b.sort((a,b) => {
-   return a - b
+    return a - b
   })
-    order = b[b.length-1]
+  order = b[b.length]
+  console.log(order);
+
+
 
     function add(ev) {
     ev.preventDefault();
@@ -282,10 +286,11 @@ const categories = [
     });
     
     for (let el of customerData) {
-      const name = el.name;
-      const type = el.type;
-      const checked = el.checked;
-      const value = el.value;
+      // const name = el.name;
+      // const type = el.type;
+      // const checked = el.checked;
+      // const value = el.value;
+      const {name, type, checked, value} = el;
       
       if (name) {
         if (["radio", "checkbox"].includes(type)) {
@@ -303,15 +308,13 @@ const categories = [
       messageErorr.innerText = "Заповніть коректно форму";
     } else {
       //   json.innerHTML = `<pre>${JSON.stringify(orderInfo)}<pre>`;
-      localStorage.setItem('rrrr',++order)
+      localStorage.setItem('rrrr',order)
       localStorage.setItem(localStorage.getItem('rrrr'), JSON.stringify(orderInfo))
-      // localStorage.getItem(order)
+
       // setTimeout(()=>location.reload(), 2000);
       
     }
   }
-// console.log(b.sort((a,b)=> a - b));
-// console.log(b);
   minus.addEventListener("click", min);
   plus.addEventListener("click", plu);
   сonfirmation.addEventListener("click", add);
