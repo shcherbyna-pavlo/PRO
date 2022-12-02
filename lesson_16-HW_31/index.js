@@ -238,8 +238,11 @@ const infoOrderChild = document.getElementsByClassName('infoOrderChild')
 // const orderNumb = document.getElementsByClassName('orderNumb');
 const infoOrder = document.querySelector('.infoOrder');
 const infoProduct = document.querySelector('.infoProduct');
+const infoProductChild = document.getElementsByClassName('infoProductChild');
 
-const orderNumb = document.querySelector('.orderNumb')
+const orderNumb = document.getElementsByClassName('orderNumb')
+
+const dele = document.getElementsByClassName('delete')
 
 
 amount.innerText = 1;
@@ -356,25 +359,26 @@ function orrrr() {
         
         orders.insertAdjacentHTML('beforeend', 
         `<div data-id="${objOrder.id}" class="orderNumb">
-        <span data-id="${objOrder.id}" class="numberOrder">ЗАМОВЛЕННЯ №: ${objOrder.id}</span><br>
+        <span data-id-delete="${objOrder.id}" class ="delete">видалити</span>
+        <span class="numberOrder">ЗАМОВЛЕННЯ №: ${objOrder.id}</span><br>
         Сума замовлення: ${objOrder.price}<br>
         Дата: ${objOrder.Date}
         </div>`)
         
         infoOrder.insertAdjacentHTML('beforeend', 
         `<div data-id-info="${objOrder.id}" class="infoOrderChild">
-        Данні для відправки:<br>
-        Призвище та ім'я:<br>
-        Місто:<br>
-        Відділення Нової Пошти:<br>
-        Придбаний товар: ${objOrder.nameProduct} / ${objOrder.amountProduct} од.
+        <b>Деталі замовлення:</b><br>
+        <b>Призвище та ім'я:</b> ${objOrder.name}<br>
+        <b>Місто:</b> ${objOrder.city}<br>
+        <b>Відділення Нової Пошти</b>: №${objOrder.post}<br>
+        <b>Придбаний товар:</b> ${objOrder.nameProduct}<br>
+        <b>Кількість:</b> ${objOrder.amountProduct} од.
         </div>`)
         
         infoProduct.insertAdjacentHTML('beforeend', 
         `<div data-id-infoProd="${objOrder.id}" class="infoProductChild">
-        Номер замовлення: ${objOrder.nameProduct}<br>
-        Сума замовлення: ${objOrder.price}<br>
-        Дата: ${objOrder.Date}
+        <b>Назва товара</b>: ${objOrder.nameProduct}<br>
+        <b>Опис товару</b>: ${objOrder.descriptionProduct}<br>
         </div>`)
       }
     }
@@ -384,14 +388,48 @@ function orrrr() {
 }
 
 function innffo (ev) {
+ 
+  Array.from(orderNumb).forEach((el) => {
+    if(ev.target === el) {
+      el.classList.add('orderNumb-active')
+    } else {
+      el.classList.remove('orderNumb-active')
+    }
+  })
+
   Array.from(infoOrderChild).forEach((el) => {
-    if(ev.target.dataset['id'] === el.dataset['idInfo']) {
+    let infoOrderData = el.dataset['idInfo'];
+    if (ev.target.dataset['id'] === infoOrderData) {
       el.style.display = 'block'
+      
+      Array.from(infoProductChild).forEach((el) => {
+        if(infoOrderData === el.dataset['idInfoprod']) {
+          el.style.display = 'block'
+        } else {
+          el.style.display = "none"
+        }
+      })
+      
     } else {
       el.style.display = "none"
     }
-})
+  })
+
+
+  Array.from(dele).forEach((el) => {
+    el.addEventListener('click', () => {
+      localStorage.removeItem(el.closest('div').dataset['id']);
+      
+      el.closest('div').remove()
+      
+      console.log(el.closest('div'));
+    } )
+  })
 }
+
+
+
+
 
 
 orders.addEventListener('click', innffo)
