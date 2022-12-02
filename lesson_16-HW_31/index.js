@@ -402,14 +402,14 @@ function innffo (ev) {
     if (ev.target.dataset['id'] === infoOrderData) {
       el.style.display = 'block'
       
-      Array.from(infoProductChild).forEach((el) => {
-        if(infoOrderData === el.dataset['idInfoprod']) {
-          el.style.display = 'block'
-        } else {
-          el.style.display = "none"
-        }
-      })
       
+    } else {
+      el.style.display = "none"
+    }
+  })
+  Array.from(infoProductChild).forEach((el) => {
+    if(ev.target.dataset['id'] === el.dataset['idInfoprod']) {
+      el.style.display = 'block'
     } else {
       el.style.display = "none"
     }
@@ -417,6 +417,7 @@ function innffo (ev) {
 
 
   Array.from(dele).forEach((el) => {
+
     el.addEventListener('click', () => {
       localStorage.removeItem(el.closest('div').dataset['id']);
       
