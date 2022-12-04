@@ -231,19 +231,16 @@ const json = document.querySelector(".json");
 
 const customerData = document.forms.customerData;
 
-const orders = document.getElementById('orders');
 const myOrders = document.querySelector('.myOrders');
-const infoOrderChild = document.getElementsByClassName('infoOrderChild')
-
-// const orderNumb = document.getElementsByClassName('orderNumb');
 const infoOrder = document.querySelector('.infoOrder');
 const infoProduct = document.querySelector('.infoProduct');
+const back = document.querySelector('.back')
+
+const orders = document.getElementById('orders');
+const infoOrderChild = document.getElementsByClassName('infoOrderChild')
 const infoProductChild = document.getElementsByClassName('infoProductChild');
-
 const orderNumb = document.getElementsByClassName('orderNumb')
-
 const dele = document.getElementsByClassName('delete')
-
 
 amount.innerText = 1;
 
@@ -269,41 +266,38 @@ function orderInfoAdd(description,name) {
   descriptionProduct = description;
 }
 
-let order = 0;
-let b = [order]
+let orderCount = 0;
+let arrOrder = [orderCount]
 
 for (var i = 0; i < localStorage.length; i++) {
   if(!isNaN(Number(localStorage.key(i)))) {
-    b.push(+(localStorage.key(i)))
-    console.log(localStorage.key(i));
+    arrOrder.push(+(localStorage.key(i)))
   }
 }
 
-b.sort((a,b) => {
+arrOrder.sort((a,b) => {
   return a - b
 })
-order = b[b.length-1]
-console.log(order);
 
+orderCount = arrOrder[arrOrder.length-1]
 
 function add(ev) {
   ev.preventDefault();
-  
+
   const orderInfo = {};
-  
+
   messageErorr.innerText = "";
-  
+
   valide.forEach((el) => {
     el.style.border = "1px solid black";
     if (el.value.trim() === "") {
       el.style.border = "1px solid red";
     }
   });
-  
+
   for (let el of customerData) {
-    
-    const {name, type, checked, value} = el
-    
+    const { name, type, checked, value } = el;
+
     if (name) {
       if (["radio", "checkbox"].includes(type)) {
         orderInfo[value] = checked;
@@ -312,130 +306,121 @@ function add(ev) {
       }
     }
   }
-  
+
   orderInfo.price = price.innerText.replace("Сума Вашего замовлення ", "");
   orderInfo.amountProduct = amount.innerText;
-  console.log(amount.innerText);
   orderInfo.Date = new Date();
-  orderInfo.nameProduct = nameProduct
-  orderInfo.descriptionProduct = descriptionProduct
-  
-  localStorage.setItem('rrrr',++order)
-  
-  orderInfo.id = order;
-  
-  if (customerData.name.value.trim() === "" || customerData.city.value === "" || customerData.post.value === "") {
+  orderInfo.nameProduct = nameProduct;
+  orderInfo.descriptionProduct = descriptionProduct;
+
+  localStorage.setItem("rrrr", ++orderCount);
+
+  orderInfo.id = orderCount;
+
+  if (
+    customerData.name.value.trim() === "" || customerData.city.value === "" || customerData.post.value === "") {
     messageErorr.innerText = "Заповніть коректно форму";
   } else {
-    //   json.innerHTML = `<pre>${JSON.stringify(orderInfo)}<pre>`;
-    localStorage.setItem(localStorage.getItem('rrrr'), JSON.stringify(orderInfo))
-    
-    // orders.insertAdjacentHTML('beforeend', 
-    // `<div class="order">
-    // Номер замовлення: ${orderInfo.id}
-    // Сума замовлення: ${orderInfo.price}
-    // Дата: ${orderInfo.Date}
-    // </div>`)
-    // localStorage.getItem(order)
-    setTimeout(()=>location.reload(), 1000);
+    localStorage.setItem(localStorage.getItem("rrrr"), JSON.stringify(orderInfo));
+    setTimeout(() => location.reload(), 1000);
   }
 }
 
-function orrrr() {
+function addMyOrders() {
   categoriesList.style.display = 'none'
-  
-  // orders.removeChild(orders.firstChild)
+  back.style.display = 'block'
+
   while (orders.firstChild) {
     orders.removeChild(orders.firstChild);
   }
-  
-  for (var i = b.length; i >= 1; i--) {
-    
-    if(!isNaN(Number(b[i]))) {
-      
-      let objOrder = JSON.parse(localStorage.getItem(b[i]))
-      
-      if(Number(b[i]) === objOrder.id) {
-        
-        orders.insertAdjacentHTML('beforeend', 
-        `<div data-id="${objOrder.id}" class="orderNumb">
-        <span data-id-delete="${objOrder.id}" class ="delete">видалити</span>
+
+  for (var i = arrOrder.length; i >= 1; i--) {
+    if (!isNaN(Number(arrOrder[i]))) {
+      let objOrder = JSON.parse(localStorage.getItem(arrOrder[i]));
+
+      if (Number(arrOrder[i]) === objOrder.id) {
+        orders.insertAdjacentHTML("beforeend",
+          `<div data-id="${objOrder.id}" class="orderNumb">
+        <span data-id-delete="${objOrder.id}" class ="delete icon-bin"></span>
         <span class="numberOrder">ЗАМОВЛЕННЯ №: ${objOrder.id}</span><br>
         Сума замовлення: ${objOrder.price}<br>
         Дата: ${objOrder.Date}
-        </div>`)
-        
-        infoOrder.insertAdjacentHTML('beforeend', 
-        `<div data-id-info="${objOrder.id}" class="infoOrderChild">
+        </div>`
+        );
+
+        infoOrder.insertAdjacentHTML("beforeend",
+          `<div data-id-info="${objOrder.id}" class="infoOrderChild">
         <b>Деталі замовлення:</b><br>
         <b>Призвище та ім'я:</b> ${objOrder.name}<br>
         <b>Місто:</b> ${objOrder.city}<br>
         <b>Відділення Нової Пошти</b>: №${objOrder.post}<br>
         <b>Придбаний товар:</b> ${objOrder.nameProduct}<br>
         <b>Кількість:</b> ${objOrder.amountProduct} од.
-        </div>`)
-        
-        infoProduct.insertAdjacentHTML('beforeend', 
-        `<div data-id-infoProd="${objOrder.id}" class="infoProductChild">
+        </div>`
+        );
+
+        infoProduct.insertAdjacentHTML("beforeend",
+          `<div data-id-infoProd="${objOrder.id}" class="infoProductChild">
         <b>Назва товара</b>: ${objOrder.nameProduct}<br>
         <b>Опис товару</b>: ${objOrder.descriptionProduct}<br>
-        </div>`)
+        </div>`
+        );
       }
     }
   }
-  productsList.style.display = "none"
-  buyButton.style.display = "none"
+
+  productsList.style.display = "none";
+  buyButton.style.display = "none";
 }
 
-function innffo (ev) {
- 
+function infoOrders (ev) {
   Array.from(orderNumb).forEach((el) => {
-    if(ev.target === el) {
-      el.classList.add('orderNumb-active')
+    if (ev.target === el || ev.target.parentNode === el) {
+      el.classList.add("orderNumb-active");
     } else {
-      el.classList.remove('orderNumb-active')
+      el.classList.remove("orderNumb-active");
     }
-  })
+  });
 
   Array.from(infoOrderChild).forEach((el) => {
-    let infoOrderData = el.dataset['idInfo'];
-    if (ev.target.dataset['id'] === infoOrderData) {
-      el.style.display = 'block'
-      
-      
+    let infoOrderData = el.dataset["idInfo"];
+    if (
+      ev.target.dataset["id"] === infoOrderData || ev.target.parentNode.dataset["id"] === infoOrderData) {
+      el.style.display = "block";
+      infoOrder.style.display = "block";
     } else {
-      el.style.display = "none"
+      el.style.display = "none";
     }
-  })
-  Array.from(infoProductChild).forEach((el) => {
-    if(ev.target.dataset['id'] === el.dataset['idInfoprod']) {
-      el.style.display = 'block'
-    } else {
-      el.style.display = "none"
-    }
-  })
+  });
 
+  Array.from(infoProductChild).forEach((el) => {
+    if (
+      ev.target.dataset["id"] === el.dataset["idInfoprod"] || ev.target.parentNode.dataset["id"] === el.dataset["idInfoprod"]) {
+      el.style.display = "block";
+      infoProduct.style.display = "block";
+    } else {
+      el.style.display = "none";
+    }
+  });
 
   Array.from(dele).forEach((el) => {
+    el.addEventListener("click", () => {
+      localStorage.removeItem(el.closest("div").dataset["id"]);
+      el.closest("div").remove();
 
-    el.addEventListener('click', () => {
-      localStorage.removeItem(el.closest('div').dataset['id']);
-      
-      el.closest('div').remove()
-      
-      console.log(el.closest('div'));
-    } )
-  })
+      infoOrder.style.display = "none";
+      infoProduct.style.display = "none";
+    });
+  });
 }
 
+function backCategories() {
+  setTimeout(() => location.reload(), 0);
+}
 
-
-
-
-
-orders.addEventListener('click', innffo)
 minus.addEventListener("click", min);
 plus.addEventListener("click", plu);
 сonfirmation.addEventListener("click", add);
-
-myOrders.addEventListener("click", orrrr);
+orders.addEventListener("click", infoOrders, true);
+myOrders.addEventListener("click", addMyOrders);
+back.addEventListener("click", backCategories);

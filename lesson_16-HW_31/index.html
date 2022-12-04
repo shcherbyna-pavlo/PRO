@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="ico.css">
     <style>
         .wrapper {
             display: grid;
@@ -101,6 +102,12 @@
             top: 50%;
             left: calc(100% + 20px);
         }
+        .back {
+            display: none;
+        }
+        .icon-bin {
+            font-size: 25px;
+        }
     </style>
 </head>
 
@@ -108,6 +115,7 @@
     <div class="wrapper">
         <div class="container">
             <div>
+                <button class="back">Повернутись до покупок</button>
                 <ul id="categories">
                     <li data-category-id="1">Toys</li>
                     <li data-category-id="2">Sports</li>
@@ -115,7 +123,9 @@
                     <li data-category-id="4">Grocery</li>
                     <li data-category-id="5">Garden</li>
                 </ul>
-                <div id="orders"></div>
+                <div id="orders">
+                    
+                </div>
                 <button class="myOrders">Мої Замовлення</button>
             </div>
             <div class="infoOrder">
