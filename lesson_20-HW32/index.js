@@ -46,8 +46,7 @@ function getComment() {
     }).then((json) => {
       [...json].forEach((el) => {
         const { name, body, email } = el;
-        comments.insertAdjacentHTML("beforeend",`<h1 class ="commentList">${name}</h1><p class ="commentList">${body}</p><p class ="commentList">${email}</p>`
-        );
+        comments.insertAdjacentHTML("beforeend",`<h1 class ="commentList">${name}</h1><p class ="commentList">${body}</p><p class ="commentList">${email}</p>`);
       });
     });
 }
