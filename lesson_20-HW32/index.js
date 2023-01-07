@@ -36,7 +36,7 @@ function getPost() {
 searchPost.addEventListener("click", validation);
 
 function getComment() {
-  const getComments = fetch(`https://jsonplaceholder.1typicode.com/comments?postId=${idPost.value}`);
+  const getComments = fetch(`https://jsonplaceholder.typicode.com/comments?postId=${idPost.value}`);
 
   getComments
     .catch((error) => {
