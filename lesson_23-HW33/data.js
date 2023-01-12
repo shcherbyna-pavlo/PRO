@@ -1,7 +1,7 @@
 let todos = [
-   { id: 1, name: 'Make pic5re', price: 304560, isActive: true },
-   { id: 2, name: 'Make pi3ture', price: 345600, isActive: true },
-   { id: 3, name: 'Make pic4ture', price: 4500, isActive: false },
+   { id: 1, name: 'Giorgio Armani My Way Floral', price: 2639, isActive: true },
+   { id: 2, name: 'Guerlain Shalimar Souffle de Parfum', price: 2906, isActive: true },
+   { id: 3, name: 'Dior Hypnotic Poison', price: 3693, isActive: false },
 ];
 
 class MyCustomElement {
