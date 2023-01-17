@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Todos from './components/Todos'
 import './App.css'
 
@@ -7,21 +7,23 @@ function App() {
 
 
   const push = () => {
-    setValue(value => {
-      value.push('fdfdg')
-      return value})
+  
+    setValue((val) => {
+      // let p = []
+      val.push('dfdf')
+       return (val.concat([]))
+     })
   }
-  
-  
-  console.log(value);
-
+console.log(value);
   return (
-    <div className="App">
-      <ul>
-      <Todos fff={value}/>
-      </ul>
-      <input type="text" />
-      <button onClick={push}>push</button>
+        <div className="App">
+        <ul>
+        <Todos fff={value}/>
+        </ul>
+        <input type="text" />
+        <button onClick={push}>push</button>
+        </div> 
+        )
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
@@ -42,8 +44,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-    </div>
-  )
+  
 }
 
 export default App
