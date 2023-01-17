@@ -2,14 +2,15 @@ import React from "react"
 
 
 class Smile extends React.Component {
-  constructor(props: { simb: any; count: number }) {
+
+  constructor(props: { symbol: any; count: number }) {
     super(props);
 
     this.state = {
 
-      simb: props.simb.map((el: any) => {
+      symbolObj: props.symbol.map((symbolEl: any) => {
         return {
-          el,
+          symbolEl,
           counterEl: props.count,
         };
       }),
@@ -18,26 +19,25 @@ class Smile extends React.Component {
     this.plus = this.plus.bind(this);
   }
 
-  plus(obj: string) {
-    const fdndflkv = () => {
-      return this.state.simb.map((obj1: any) => {
-        if (obj1.el === obj) {
-          obj1.counterEl += 1;
+  plus(symbol: string) {
+
+    this.setState(() => {
+      return this.state.symbolObj.map((obj: any) => {
+        if (obj.symbolEl === symbol) {
+          obj.counterEl += 1;
         }
 
-        return this.state.simb;
+        return this.state.symbolObj;
       });
-    };
-
-    this.setState(fdndflkv);
+    });
   }
 
   render() {
-    return this.state.simb.map((obj: any) => {
+    return this.state.symbolObj.map((obj: any) => {
       return (
         <>
-          <div key={obj.el}>
-            <button onClick={() => this.plus(obj.el)}>{obj.el}</button>
+          <div key={obj.symbolEl}>
+            <button onClick={() => this.plus(obj.symbolEl)}>{obj.symbolEl}</button>
             <span>{obj.counterEl}</span>
           </div>
         </>
@@ -45,6 +45,5 @@ class Smile extends React.Component {
     });
   }
 }
-
 
 export default Smile
