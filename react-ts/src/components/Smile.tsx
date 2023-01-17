@@ -36,8 +36,9 @@ class Smile extends React.Component {
     return this.state.symbolObj.map((obj: any) => {
       return (
         <>
-          <div key={obj.symbolEl}>
+          <div className="smile" key={obj.symbolEl}>
             <button onClick={() => this.plus(obj.symbolEl)}>{obj.symbolEl}</button>
+            <br />
             <span>{obj.counterEl}</span>
           </div>
         </>
