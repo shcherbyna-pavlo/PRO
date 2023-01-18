@@ -39,3 +39,15 @@
 .read-the-docs {
   color: #888;
 }
+
+.list {
+  list-style: none;
+  position: relative;
+}
+
+.inputLeft {
+  /* text-align: start;
+   */
+   position: absolute;
+   left: 0;
+}

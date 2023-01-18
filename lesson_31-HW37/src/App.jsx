@@ -1,28 +1,47 @@
-import React, { useState } from 'react'
-import Todos from './components/Todos'
+import React, { useState, useEffect} from 'react'
+import TodoList from './components/TodoList'
 import './App.css'
 
 function App() {
-  const [value, setValue] = useState([])
+  const [value, setValue] = useState('')
+ const [val, setVal] = useState([])
 
-
-  const push = () => {
-  
-    setValue((val) => {
-      // let p = []
-      val.push('dfdf')
-       return (val.concat([]))
+ const push = () => {
+    setVal((prev) => {
+       return [...prev, value]
      })
+
+     setValue('')
+    //  setDisabled("disabled")
   }
-console.log(value);
-  return (
-        <div className="App">
+
+//  useEffect(() => {
+//   if(value) {
+//     setDisabled("")
+//   } else {setDisabled("disabled")}
+//  },[value])
+
+
+
+//  const dddd = (e) => {
+//   setValue(e.target.value)
+// }
+  
+  // if (e.target.value !== "") setDisabled("")
+  // if (e.target.value === "") setDisabled("disabled")
+
+
+return  (
+  <>
+    <div className="App">
         <ul>
-        <Todos fff={value}/>
+        <TodoList fff={val}/>
         </ul>
-        <input type="text" />
-        <button onClick={push}>push</button>
-        </div> 
+        <input type="text" onChange={(e) => setValue(e.target.value)}/>
+        <button disabled = {!value.trim()} onClick={push}>Add</button>
+        </div>
+    </>
+         
         )
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
