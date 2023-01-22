@@ -1,22 +1,13 @@
-import React, {useState} from "react"
 
 
-function TodoList({fff}) {
+function TodoList({todo}) {
 
-// const [value, setValue] = useState(fff)
-
-// setValue(fff)
-// console.log(value);
-
-// console.log(value);
-
-return fff.map((el) => {
-   return <li className="list" key={el}>
-      <label htmlFor="">
-      <input className="inputLeft" type="checkbox" />
-      {el}
-         </label></li>
-})
+   return todo.map((el) => {
+      return <li className="list" key={el}>
+         <input className="inputCheck" type="checkbox" />
+         <label className='labelCheck' htmlFor="">{el}</label>
+         </li>
+   })
 }
 
 export default TodoList
