@@ -1,0 +1,36 @@
+.icon-compass:before {
+   content: "\e949";
+   font-size: 10px;
+ }
+
+ .list-city {
+   cursor: pointer;
+ }
+
+ .wind-direction{
+   display: inline-block;
+ }
+
+ .items {
+   display: inline-block;
+   margin: 0 20px;
+ }
+
+ .items__wind {
+   display: inline-block;
+   margin: 0 20px;
+ }
+
+ .temp {
+   font-size: 70px;
+ }
+
+ .date {
+   color: rgb(167, 52, 52);
+   margin-bottom: 0;
+ }
+
+ .city {
+   margin-top: 0;
+   font-size: 30px;
+ }
