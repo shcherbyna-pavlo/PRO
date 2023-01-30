@@ -1,29 +1,16 @@
-import { useState, useEffect, useCallback} from 'react'
+import { useState, useEffect} from 'react'
 
-function Table({datas}) {
+function Table({dataForm}) {
    const [data, setData] = useState([])
-   const [dataForm, setdataForm] = useState([])
  
    useEffect(() =>{
      fetch('https://jsonplaceholder.typicode.com/users')
      .then(response => response.json()).then(json => setData(json))
-   //   setdataForm([...datas,...data])
    }, [])
 
-
-   // setdataForm([...data,...datas])
-
-   // useCallback(()=>{
-   //  setdataForm([...data,...datas])
-   // },[datas.length])
-
    useEffect(()=>{
-      setData([...data,...datas])
-     },[])
-
-// console.log(dataForm);
-// console.log(datas.length);
-// console.log([...data,...datas]);
+      setData([...data,...dataForm])
+     },[dataForm])
 
    const del=((id)=>{
       setData((()=>{
@@ -42,4 +29,5 @@ function Table({datas}) {
       )
    })
 }
+
 export default Table
