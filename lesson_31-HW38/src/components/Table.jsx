@@ -1,33 +1,36 @@
 import { useState, useEffect} from 'react'
 
-function Table({dataForm}) {
-   const [data, setData] = useState([])
- 
-   useEffect(() =>{
-     fetch('https://jsonplaceholder.typicode.com/users')
-     .then(response => response.json()).then(json => setData(json))
-   }, [])
+function Table({contactForm}) {
+  const [contacts, setContacts] = useState([]);
 
-   useEffect(()=>{
-      setData([...data,...dataForm])
-     },[dataForm])
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((json) => setContacts(json));
+  }, []);
 
-   const del=((id)=>{
-      setData((()=>{
-         return data.filter(item => id!==item.id)
-      }))
-   })
+  useEffect(() => {
+    setContacts([...contacts, ...contactForm]);
+  }, [contactForm]);
 
-   return data.map((el)=>{
-      return (
-       <tr className='ffff' key={el.id}>
-         <td>{el.name}</td>
-         <td>{el.username}</td>
-         <td>{el.phone}</td>
-         <td><button onClick={()=>del(el.id)}>Delete</button></td>
-       </tr>
-      )
-   })
+  const del = (id) => {
+    setContacts(() => {
+      return contacts.filter((item) => id !== item.id);
+    });
+  };
+
+  return contacts.map((contact) => {
+    return (
+      <tr className="ffff" key={contact.id}>
+        <td>{contact.name}</td>
+        <td>{contact.username}</td>
+        <td>{contact.phone}</td>
+        <td>
+          <button onClick={() => del(contact.id)}>Delete</button>
+        </td>
+      </tr>
+    );
+  });
 }
 
 export default Table

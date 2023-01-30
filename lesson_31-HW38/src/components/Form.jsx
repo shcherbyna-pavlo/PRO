@@ -5,43 +5,42 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 function Form() {
-const [getName, usegetName] = useState('')
-const [getUsername, usegetUsername] = useState('')
-const [getPhone, usegetPhone] = useState('')
-const [getData, usegetData] = useState([])
+const [getName, setgetName] = useState("");
+const [getUsername, setgetUsername] = useState("");
+const [getPhone, setgetPhone] = useState("");
+const [getContact, setgetContact] = useState([]);
 
 
-  const submit = (ev)=>{
-     ev.preventDefault()
-   usegetData([
+  const submit = (ev) => {
+    ev.preventDefault();
+    setgetContact([
       {
-      id: Date.now(),
-      name:getName,
-      username:getUsername,
-      phone:getPhone
-   }
-])
-   }
+        id: Date.now(),
+        name: getName,
+        username: getUsername,
+        phone: getPhone,
+      },
+    ]);
+  };
 
    return (<>
-      <Table dataForm={getData}/>
+      <Table contactForm={getContact}/>
 
-   <Popup trigger={<button className='open'>Add contact</button>} position="top center">
-   {close => (
-      <div>
-      <form onSubmit={submit}>
-         <input required type="text" name='name' onChange={(ev)=>usegetName(ev.target.value)}  placeholder="name"/>
-         <input required type="text" name='username' onChange={(ev)=>usegetUsername(ev.target.value)}  placeholder="username"/>
-         <input required type="text" name='phone' onChange={(ev)=>usegetPhone(ev.target.value)}  placeholder="phone"/>
-         <button className='save' type="submit">Save</button>
-      <button  className="close" onClick={close}>Close</button>
-      </form>
-      </div>
-    )}
-   </Popup>
-
+      <Popup trigger={<button className='open'>Add contact</button>} position="top center">
+         {close => (
+            <div>
+               <form onSubmit={submit}>
+                  <input required type="text" name='name' onChange={(ev) => setgetName(ev.target.value)} placeholder="name" />
+                  <input required type="text" name='username' onChange={(ev) => setgetUsername(ev.target.value)} placeholder="username" />
+                  <input required type="text" name='phone' onChange={(ev) => setgetPhone(ev.target.value)} placeholder="phone" />
+                  <button className='save' type="submit">Save</button>
+                  <button className="close" onClick={close}>Close</button>
+               </form>
+            </div>
+         )}
+      </Popup>
    </>
-   )
+   );
 }
 
 export default Form
