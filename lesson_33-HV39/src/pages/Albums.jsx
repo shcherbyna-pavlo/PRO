@@ -1,29 +1,40 @@
-import React from 'react';
-import {Routes, Route, Link} from 'react-router-dom';
-import {useState,useEffect} from 'react'
+import React from "react";
+import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-function Albums({id}) {
+function Albums() {
+  const [albums, setalbums] = useState([]);
+  const { userId } = useParams();
 
-    const [albums, setalbums] = useState([]);
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`)
+      .then((response) => response.json())
+      .then((json) => setalbums(json));
+  }, []);
 
-    useEffect(() => {
-      fetch(`https://jsonplaceholder.typicode.com/albums?userId=${id}`)
-        .then((response) => response.json())
-        .then((json) => setalbums(json));
-    }, []);
-    console.log(id);
-
-    return albums.map((album) => {
-        return (
-          <tr className="ffff" key={album.id}>
-            <td>{album.title}</td>
-            <td>
-              <Link to={`/photos?albumId=${album.id}`}>Albums</Link>
-            </td>
-
+  return (
+    <main className="container">
+      <table>
+        <thead>
+          <tr>
+            <td>Id User</td>
+            <td>Title</td>
           </tr>
-        );
-      });
+        </thead>
+        <tbody>
+          {albums.map((album) => (
+            <tr key={album.id}>
+              <td>{album.userId}</td>
+              <td>{album.title}</td>
+              <td>
+                <Link to={`/photos/${album.id}`}>Photos</Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </main>
+  );
 }
 
-export default Albums
+export default Albums;

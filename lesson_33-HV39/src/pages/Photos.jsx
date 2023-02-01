@@ -1,29 +1,41 @@
-import React from 'react';
-import {Routes, Route, Link} from 'react-router-dom';
-import {useState,useEffect} from 'react'
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function Photos() {
+  const [photos, setPhotos] = useState([]);
+  const { albumId } = useParams();
 
-    const [photos, setPhotos] = useState([]);
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`)
+      .then((response) => response.json())
+      .then((json) => setPhotos(json));
+  }, []);
 
-    useEffect(() => {
-      fetch("https://jsonplaceholder.typicode.com/photos?albumId=1")
-        .then((response) => response.json())
-        .then((json) => setPhotos(json));
-    }, []);
-    console.log(photos);
-
-    return photos.map((photo) => {
-        return (
-          <tr className="ffff" key={photo.id}>
-            <td>{photo.title}</td>
-            <td><img src={photo.thumbnailUrl}></img></td>
-            <td>
-              <Link to={`/`}>Albums</Link>
-            </td>
+  return (
+    <main className="container">
+      <table>
+        <thead>
+          <tr>
+            <td>Id Album</td>
+            <td>Title</td>
+            <td>Photo</td>
           </tr>
-        );
-      });
+        </thead>
+        <tbody>
+          {photos.map((photo) => (
+            <tr key={photo.id}>
+              <td>{photo.albumId}</td>
+              <td>{photo.title}</td>
+              <td>
+                <img src={photo.thumbnailUrl}></img>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </main>
+  );
 }
 
-export default Photos
+export default Photos;
