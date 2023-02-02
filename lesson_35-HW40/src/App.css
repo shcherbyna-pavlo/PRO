@@ -4,3 +4,28 @@
   padding: 2rem;
   text-align: center;
 }
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.del {
+  color: red;
+  cursor: pointer;
+}
+
+input:checked + span {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.container {
+  width: 50%;
+}

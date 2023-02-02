@@ -9,14 +9,14 @@ function InputFiled() {
     const setTask = (() => {
         dispatch(addTodo({ text }))
         setText('');
-    })
+    });
 
     return (
         <label>
             <input type="text" value={text} onChange={((e) => setText(e.target.value))} />
             <button disabled={!text.trim()} onClick={setTask}>Add todo</button>
         </label>
-    )
+    );
 }
 
-export default InputFiled
+export default InputFiled;
