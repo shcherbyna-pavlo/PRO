@@ -5,15 +5,13 @@ import { useSelector, useDispatch} from "react-redux";
 import { fetchAlbums} from "../store/routSlice";
 
 function Albums() {
-  // const [albums, setalbums] = useState([]);
   const { userId } = useParams();
   const albums = useSelector((state) => state.rout.albums);
-  
-  const dispatch = useDispatch()
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAlbums(userId))
-    console.log(userId);
+    dispatch(fetchAlbums(userId));
   }, [userId]);
 
   return (

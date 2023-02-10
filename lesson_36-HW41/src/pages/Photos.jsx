@@ -1,16 +1,18 @@
 import React from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useSelector, useDispatch} from "react-redux";
+import { fetchPhotos} from "../store/routSlice";
 
 function Photos() {
-  const [photos, setPhotos] = useState([]);
   const { albumId } = useParams();
+  const photos = useSelector((state) => state.rout.photos);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`)
-      .then((response) => response.json())
-      .then((json) => setPhotos(json));
-  }, []);
+    dispatch(fetchPhotos(albumId));
+  }, [albumId]);
 
   return (
     <main className="container">

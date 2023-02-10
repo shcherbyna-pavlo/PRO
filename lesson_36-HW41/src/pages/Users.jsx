@@ -6,15 +6,12 @@ import { fetchUsers} from "../store/routSlice";
 
 function Users() {
   const users = useSelector((state) => state.rout.users);
-  
-  const dispatch = useDispatch()
 
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchUsers())
+    dispatch(fetchUsers());
   }, []);
-
-  console.log(users);
 
   return (
     <main className="container">
