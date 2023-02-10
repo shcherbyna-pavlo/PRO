@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import todoReducer from './todoSlice';
+import routReducer from './routSlice';
 
 export default configureStore({
   reducer: {
-    todos: todoReducer,
+    rout: routReducer,
   },
 });

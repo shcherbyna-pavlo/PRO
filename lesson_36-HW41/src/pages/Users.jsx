@@ -1,15 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch} from "react-redux";
+import { fetchUsers} from "../store/routSlice";
 
 function Users() {
-  const [users, setUsers] = useState([]);
+  const users = useSelector((state) => state.rout.users);
+  
+  const dispatch = useDispatch()
+
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((json) => setUsers(json));
+    dispatch(fetchUsers())
   }, []);
+
+  console.log(users);
 
   return (
     <main className="container">
