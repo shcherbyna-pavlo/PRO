@@ -7,7 +7,6 @@ import { fetchPhotos} from "../store/routSlice";
 function Photos() {
   const { albumId } = useParams();
   const photos = useSelector((state) => state.rout.photos);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
