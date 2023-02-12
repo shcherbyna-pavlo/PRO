@@ -33,8 +33,8 @@ export const fetchPhotos = (albumId) => {
     };
   };
 
-const routSlice = createSlice({
-    name: 'rout',
+const rootSlice = createSlice({
+    name: 'structure',
     initialState:{
         users: [],
         albums: [],
@@ -54,6 +54,6 @@ const routSlice = createSlice({
     },
 });
 
-const {setUsers, setAlbums, setPhotos} = routSlice.actions;
+const {setUsers, setAlbums, setPhotos} = rootSlice.actions;
 
-export default routSlice.reducer;
+export default rootSlice.reducer;

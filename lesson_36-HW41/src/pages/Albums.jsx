@@ -2,11 +2,11 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch} from "react-redux";
-import { fetchAlbums} from "../store/routSlice";
+import { fetchAlbums} from "../store/rootSlice";
 
 function Albums() {
   const { userId } = useParams();
-  const albums = useSelector((state) => state.rout.albums);
+  const albums = useSelector((state) => state.structure.albums);
   const dispatch = useDispatch();
 
   useEffect(() => {

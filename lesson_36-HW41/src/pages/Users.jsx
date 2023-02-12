@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch} from "react-redux";
-import { fetchUsers} from "../store/routSlice";
+import { fetchUsers } from "../store/rootSlice";
 
 function Users() {
-  const users = useSelector((state) => state.rout.users);
+  const users = useSelector((state) => state.structure.users);
   const dispatch = useDispatch();
 
   useEffect(() => {

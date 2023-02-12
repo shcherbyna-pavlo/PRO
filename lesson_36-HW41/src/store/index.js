@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import routReducer from './routSlice';
+import rootReducer from './rootSlice';
 
 export default configureStore({
   reducer: {
-    rout: routReducer,
+    structure: rootReducer,
   },
 });
