@@ -52,7 +52,7 @@ function gen (n) {
         let a = Math.floor(Math.random() * firstBasket.length)
         let b = Math.floor(Math.random() * secondBasket.length)
         console.log(a,b);
-        playOff.insertAdjacentHTML('beforeend',`<div class = "net"><span class = "com">${firstBasket[a]}</span><span class = "com">${secondBasket[b]}</span></div>`)
+        playOff.insertAdjacentHTML('beforeend',`<div class = "net"><label><span class = "com">${firstBasket[a]}</input></span><input type='text'></label><label><span class = "com">${secondBasket[b]}</input></span><input type='text'></label></div>`)
         firstBasket.splice(a,1)
         secondBasket.splice(b,1)
     
